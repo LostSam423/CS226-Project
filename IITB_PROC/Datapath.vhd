@@ -11,7 +11,7 @@ entity Datapath is
 		
 		--controls from FSM
 		cz_assign, rf_wr, alu_op, c_m6, c_m8, c_sext9: in std_logic;
-		c_m1, c_m4, c_m5, c_m7, c_m8, c_m9: in std_logic_vector(1 downto 0);
+		c_m1, c_m4, c_m5, c_m7, c_m8, c_m9: in std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
 		
 		-- ins from memory
 		mem_dataout: instd_logic_vector(15 downto 0);
