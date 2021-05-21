@@ -1,7 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
-library work;
-use work.Gates.all;
+--library work;
+--use work.Gates.all;
+
 -- Begin entity
 entity Mux16_2_1 is
 port( A, B : in std_logic_vector(15 downto 0);

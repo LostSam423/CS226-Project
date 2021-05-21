@@ -15,9 +15,9 @@ architecture behave of ALU is
 	signal t1,t2: std_logic_vector(15 downto 0);
 	signal car1, car2 : std_logic;
 
-	component bit_16_adder is
+	component adder_16bit is
       port (A,B: in std_logic_vector(15 downto 0);car_in: in std_logic; car_out: out std_logic; sum: out std_logic_vector(15 downto 0));
-   end component bit_16_adder;
+   end component adder_16bit;
 
 	component nand_op is
 	   port(A,B: in std_logic_vector(15 downto 0);

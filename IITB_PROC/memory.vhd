@@ -18,7 +18,7 @@ architecture behave of Memory is
 	128 => x"ffff", 129 => x"0002", 130 => x"0000", 131 => x"0000", 132 => x"0001", 133 => x"0000",
 	others => x"0000");
 	begin 
-	  process(wr,rd,Addr_in,D_in,mem_reg,clk)
+	  process(clk)
 	   begin
 		if (rd = '1') then
 			 D_out <= mem_reg(to_integer(unsigned(Addr_in)));

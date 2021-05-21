@@ -1,16 +1,15 @@
 library ieee;
 use ieee.std_logic_1164.all;
-library work;
-use work.Gates.all;
+--library work;
+--use work.Gates.all;
 
-entity se10 is
+entity sext_6bit is
 	port (
 		X: in std_logic_vector(5 downto 0);
 		Y: out std_logic_vector(15 downto 0));
-end entity se10;
+end entity sext_6bit;
 
-
-architecture Easy of se10 is
+architecture Easy of sext_6bit is
 
 begin
       Y(5 downto 0) <= X(5 downto 0); 

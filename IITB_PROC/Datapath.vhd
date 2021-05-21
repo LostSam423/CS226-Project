@@ -11,18 +11,18 @@ entity Datapath is
 		
 		--controls from FSM
 		c_assign, z_assign, rf_wr, alu_op, c_m6, c_m8, c_sext9: in std_logic;
-		c_m1, c_m4, c_m5, c_m7, c_m8, c_m9: in std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
-		c_d1, c_d2, c_d3, c_d4: in std_logic;
+		c_m1, c_m4, c_m5, c_m7, c_m9: in std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
+		c_d1, c_d2, c_d3, c_d4: in std_logic_vector(1 downto 0);
 		
 		-- ins from memory
-		mem_dataout: instd_logic_vector(15 downto 0);
+		mem_dataout: in std_logic_vector(15 downto 0);
 		
 		--outs to memory
 		mem_addr, mem_datain: out std_logic_vector(15 downto 0);
 		
 		--outs to FSM
 		instruction: out std_logic_vector(15 downto 0);
-		C_val, Z_val: out std_logic;
+		C_val, Z_val: out std_logic
 	);
 end entity;
 
@@ -34,7 +34,7 @@ component ALU is
 		X, Y: in std_logic_vector(15 downto 0);
 		op: in std_logic;
 		--not complete(have to set nothing flag, also have to take C_in, Z_in input, to maintain states clk, rst too)
-		Cout, Zout: out std_logic;
+		C_out, Z_out: out std_logic;
 		Z: out std_logic_vector(15 downto 0)
 	);
 end component;
@@ -55,7 +55,7 @@ component sext_9bit is
 	port(
 		X: in std_logic_vector(8 downto 0);
 		s_type: in std_logic;
-		Y: out std_logic_vector(15 downto 0));
+		Y: out std_logic_vector(15 downto 0)
 	);
 end component;
 
@@ -63,7 +63,7 @@ end component;
 component sext_6bit is --in the sext_6bit implementation rn, clk signal is not used, unlike sext_9bit where there is process statement on input variables
 	port(
 		X: in std_logic_vector(5 downto 0);
-		Y: out std_logic_vector(15 downto 0));
+		Y: out std_logic_vector(15 downto 0)
 	);
 end component;
 
@@ -86,7 +86,7 @@ component Mux16_4_1 is
 end component;
 
 -- 7. 3bit 2x1 Mux
-component Mux16_2_1 is
+component Mux3_2_1 is
 	port( 
 		A, B : in std_logic_vector(2 downto 0);
 		S0 : in std_logic;
@@ -95,7 +95,7 @@ component Mux16_2_1 is
 end component;
 
 -- 8. 3bit 4x1Mux
-component Mux16_4_1 is
+component Mux3_4_1 is
 	port( 
 		A, B, C, D : in std_logic_vector(2 downto 0);
 		S1, S0 : in std_logic;
@@ -122,16 +122,17 @@ end component;
 
 -- temporary registers
 signal t1, t2, t3, t4, t5, gbg16: std_logic_vector(15 downto 0);
-signal pc, instr : std_logic(15 downto 0); -- initialise to "0" on reset
+signal pc, instr : std_logic_vector(15 downto 0); -- initialise to "0" on reset
 signal C, Z, gbg1: std_logic; -- initialise to "0" on reset
-signal t_reg: std_logic(15 downto 0); -- initialise to "000000000.." on reset
+signal t_reg: std_logic_vector(15 downto 0); -- initialise to "000000000.." on reset
  
 --signals to connect the various components
 signal m7out: std_logic_vector(2 downto 0);
-signal m4out, m5out, m9out, d2in, d3in, d4in: std_logic_vector(15 downto 0);
+signal m4out, m5out, m9out, d2in, d3in, d4in, se7out, se10out: std_logic_vector(15 downto 0);
 signal alu_c, alu_z: std_logic;
 
 --constants
+constant Z3: std_logic_vector(2 downto 0) := (others => '0');
 constant Z16 :  std_logic_vector(15 downto 0) := (others => '0');
 constant O16 :  std_logic_vector(15 downto 0) := (0 => '1', others => '0');
 
@@ -152,8 +153,8 @@ RF: RegisterFile port map(clk => clk,
 alu_main: ALU port map(X => m4out,
 								Y => m5out,
 								op => alu_op,
-								Cout => alu_c,
-								Zout => alu_z,
+								C_out => alu_c,
+								Z_out => alu_z,
 								Z => d4in);
 
 se7: sext_9bit port map(X => instr(8 downto 0),
@@ -161,7 +162,7 @@ se7: sext_9bit port map(X => instr(8 downto 0),
 								Y => se7out);
 
 se10: sext_6bit port map(X => instr(5 downto 0),
-									Y => se10out));
+									Y => se10out);
 
 --Muxes
 m1: Mux16_4_1 port map(A => pc,
@@ -198,7 +199,7 @@ m6: Mux16_2_1 port map(A => se7out,
 m7: Mux3_4_1 port map(A => instr(11 downto 9),
 								B => instr(5 downto 3), 
 								C => t_reg(2 downto 0), 
-								D => Z16, 
+								D => Z3, 
 								S1 => c_m7(1), 
 								S0 => c_m7(0), 
 								y => m7out);
@@ -215,13 +216,13 @@ m9: Mux16_4_1 port map(A => t3,
 								C => t5, 
 								D => Z16,
 								S1 => c_m9(1),
-								S0 => c_m9(0)
+								S0 => c_m9(0),
 								y => m9out);
 
 --Demuxes
 d1: DeMux16_1_4 port map(A => mem_dataout,
 									S1 => c_d1(1),
-									S0 => c_d0(1),
+									S0 => c_d1(1),
 									O0 => instr,
 									O1 => t5,
 									O2 => gbg16,

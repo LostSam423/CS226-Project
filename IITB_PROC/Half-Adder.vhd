@@ -4,12 +4,12 @@ use work.all;
 library IEEE;
 use ieee.std_logic_1164.all;
 
-entity Half-Adder is
+entity Half_Adder is
 	port(a,b: in std_logic;
 		sum,carry: out std_logic);
 end entity;
 
-architecture arch of Half-Adder is
+architecture arch of Half_Adder is
 	signal p: std_logic_vector(2 downto 0);
 	
 	component Mux1_2_1
