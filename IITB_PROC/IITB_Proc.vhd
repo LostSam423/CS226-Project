@@ -32,7 +32,7 @@ component Datapath is
 		mem_addr, mem_datain: out std_logic_vector(15 downto 0);
 		
 		--outs to FSM
-		instruction: out std_logic_vector(15 downto 0);
+		instruction, ra, rb, t_reg: out std_logic_vector(15 downto 0);
 		C_val, Z_val: out std_logic
 	);
 end component;
@@ -42,7 +42,7 @@ component FSM is
 	port(
 		clk, rst: in std_logic;
 		--ins from datapath
-		instruction: in std_logic_vector(15 downto 0);
+		instruction, ra, rb, t_reg: in std_logic_vector(15 downto 0);
 		C_val, Z_val: in std_logic;
 		
 		--outs to datapath
@@ -68,7 +68,7 @@ end component;
 -- signals to connect the inputs to the outputs of components
 signal sig_c_assign, sig_z_assign, sig_rf_wr, sig_alu_op, sig_c_m6, sig_c_m8, sig_c_sext9 :std_logic;
 signal sig_c_m1, sig_c_m4, sig_c_m5, sig_c_m7, sig_c_m9, sig_c_d1, sig_c_d2, sig_c_d3, sig_c_d4: std_logic_vector(1 downto 0);
-signal sig_mem_dataout, sig_mem_addr, sig_mem_datain, sig_instr: std_logic_vector(15 downto 0);
+signal sig_mem_dataout, sig_mem_addr, sig_mem_datain, sig_instr, sig_ra, sig_rb, sig_t_reg: std_logic_vector(15 downto 0);
 signal sig_C, sig_Z, sig_mem_wr, sig_mem_rd: std_logic;
 
 
@@ -84,13 +84,19 @@ datapath_main: Datapath port map(clk => clk, rst => rst,
 											mem_addr => sig_mem_addr,
 											mem_datain => sig_mem_datain,
 											instruction => sig_instr,
+											ra => sig_ra,
+											rb => sig_rb,
+											t_reg => sig_t_ref,
 											C_val => sig_C,
 											Z_val => sig_Z);
 											
 FSM_main: FSM port map(clk => clk, rst => rst,
 									instruction => sig_instr,
+									ra => sig_ra,
+									rb => sig_rb,
 									C_val => sig_C,
 									Z_val => sig_Z,
+									t_reg => t_reg_v,
 									
 									c_assign => sig_c_assign, z_assign => sig_z_assign, rf_wr => sig_rf_wr, 
 									alu_op => sig_alu_op, c_m6 => sig_c_m6, c_m8 => sig_c_m8, c_sext9 => sig_c_sext9,

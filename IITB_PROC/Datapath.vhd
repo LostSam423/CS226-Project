@@ -10,7 +10,7 @@ entity Datapath is
 		clk, rst: in std_logic;
 		
 		--controls from FSM
-		c_assign, z_assign, rf_wr, alu_op, c_m6, c_m8, c_sext9: in std_logic;
+		c_assign, z_assign, rf_wr, alu_op, c_m6, c_m8, c_sext9, reset_treg: in std_logic;
 		c_m1, c_m4, c_m5, c_m7, c_m9: in std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
 		c_d1, c_d2, c_d3, c_d4: in std_logic_vector(1 downto 0);
 		
@@ -21,7 +21,7 @@ entity Datapath is
 		mem_addr, mem_datain: out std_logic_vector(15 downto 0);
 		
 		--outs to FSM
-		instruction: out std_logic_vector(15 downto 0);
+		instruction, ra, rb, t_reg: out std_logic_vector(15 downto 0);
 		C_val, Z_val: out std_logic
 	);
 end entity;
@@ -120,16 +120,27 @@ component DeMux1_1_2 is
 	);
 end component;
 
+-- 11. FF register
+component ff_register is
+	port(
+		clk, rst: in std_logic;
+		d: in std_logic_vector(15 downto 0);
+		s: out std_logic_vector(15 downto 0)
+	);
+end component;
+
 -- temporary registers
 signal t1, t2, t3, t4, t5, gbg16: std_logic_vector(15 downto 0);
-signal pc, instr : std_logic_vector(15 downto 0); -- initialise to "0" on reset
+signal pc: std_logic_vector(15 downto 0) := (others => '0');
+signal instr : std_logic_vector(15 downto 0); -- initialise to "0" on reset
 signal C, Z, gbg1: std_logic; -- initialise to "0" on reset
-signal t_reg: std_logic_vector(15 downto 0); -- initialise to "000000000.." on reset
+signal t_reg2: std_logic_vector(15 downto 0); -- initialise to "000000000.." on reset
  
 --signals to connect the various components
 signal m7out: std_logic_vector(2 downto 0);
 signal m4out, m5out, m9out, d2in, d3in, d4in, se7out, se10out: std_logic_vector(15 downto 0);
 signal alu_c, alu_z: std_logic;
+signal pc_copy;
 
 --constants
 constant Z3: std_logic_vector(2 downto 0) := (others => '0');
@@ -164,10 +175,12 @@ se7: sext_9bit port map(X => instr(8 downto 0),
 se10: sext_6bit port map(X => instr(5 downto 0),
 									Y => se10out);
 
+									
+ffr: ff_register port map(clk=>clk, rst => reset_treg, d=> t_reg2, s=> t_reg);
 --Muxes
 m1: Mux16_4_1 port map(A => pc,
 								B => t4, 
-								C => Z16, 
+								C => t1, 
 								D => Z16,
 								S1 => c_m1(1),
 								S0 => c_m1(0),
@@ -197,9 +210,9 @@ m6: Mux16_2_1 port map(A => se7out,
 
 
 m7: Mux3_4_1 port map(A => instr(11 downto 9),
-								B => instr(5 downto 3), 
-								C => t_reg(2 downto 0), 
-								D => Z3, 
+								B => instr(8 downto 6), 
+								C => instr(5 downto 3), 
+								D => t_reg(2 downto 0), 
 								S1 => c_m7(1), 
 								S0 => c_m7(0), 
 								y => m7out);
@@ -214,7 +227,7 @@ m8: Mux16_2_1 port map(A => t4,
 m9: Mux16_4_1 port map(A => t3,
 								B => t4, 
 								C => t5, 
-								D => Z16,
+								D => pc,
 								S1 => c_m9(1),
 								S0 => c_m9(0),
 								y => m9out);
@@ -250,7 +263,7 @@ d4: DeMux16_1_4 port map(A => d4in,
 									S1 => c_d4(1),
 									S0 => c_d4(0),
 									O0 => t4,
-									O1 => t_reg,
+									O1 => t_reg2,
 									O2 => gbg16,
 									O3 => gbg16);
 
@@ -263,9 +276,20 @@ d5: DeMux1_1_2 port map(A => alu_c,
 -- modifying the Z flag
 d6: DeMux1_1_2 port map(A => alu_z, 
 								S => z_assign,
-								O0 => gbg1,
+								O0 => gbg1, -- garbage
 								O1 => Z);
 
+			
+--have to set default value, after setting the reset becomes 1			
+--process(rst, clk)
+--begin
+--		if(rst = '1') then
+--			pc <= Z16;
+--		end if;
+--end process;
+
+ra <= t1;
+rb <= t2;
 mem_datain <= t1;
 C_val <= C;
 Z_val <= Z;
