@@ -13,7 +13,7 @@ entity FSM is
 		C_val, Z_val: in std_logic;
 	
 		--outs to datapath
-		c_assign, z_assign, rf_wr, alu_op, c_m6, c_m8, c_sext9, reset_treg: out std_logic:= '0';
+		c_assign, z_assign, rf_wr, alu_op, c_m2, c_m3, c_m6, c_m8, c_sext9, reset_treg: out std_logic:= '0';
 		c_m1, c_m4, c_m5, c_m7, c_m9: out std_logic_vector(1 downto 0):= "00";-- c_m2, c_m3 are not available as those muxes are not present as of now
 		c_d1, c_d2, c_d3, c_d4: out std_logic(1 downto 0);
 		
@@ -36,24 +36,6 @@ process(clk,state)
 	variable ra_v, rb_v: std_logic_vector(15 downto 0);
 	
 begin 
-
--- State transitions:
---1) ADD: S0 - S1 - S5 - 
---2) ADC: S0 - S1 - 
---3) ADZ: S0 - S1 - 
---4) ADI: S0 - S1 - 
---5) NDU: 
---6) NDC:
---7) NDZ:
---8) LHI:
---9) LW:
---10) SW:
---11) LA:
---12) SA:
---13) BEQ:
---14) JAL:
---15) JLR:
-
 case state is --  making cases for states 
        when S_res => -- this state resets all registers, memory write and read flags and z,car flags
 		 -- add logic
@@ -74,6 +56,7 @@ case state is --  making cases for states
 	    when S1 =>
 			 c_d2 <= "00";
 			 c_d3 <= "00";
+		         c_m2 <= '0';
 			 if(op_v="0001" or op_v="0011" or op_v="0100" or op_v="0101" or op_v="1100" or op_v="1000") then
 				next_state:= S4;
 			 elsif (op_v ="1100") then
@@ -172,21 +155,31 @@ case state is --  making cases for states
 					c_d4 <= "00";
 					next_state := S8;
 			 elsif (op_v="0110") then
-					alu_op <= "01";
-					c_m4 <= "00";
-					c_m5 <= "11";
-					c_d4 <= "00";
+					alu_op <= "01"; -- add
+					c_m4 <= "00"; -- t1 in
+					c_m5 <= "11"; -- treg in
+					c_d4 <= "00"; --t4 out
 					next_state := S7;
+			 elsif (op_v="0111") then
+					alu_op <= "01"; -- add
+					c_m4 <= "00"; -- t1 in
+					c_m5 <= "11"; --treg in 
+					c_d4 <= "00"; --t4 out
+					next_state := S8;
 			 end if;
 			 -- add cases for adc,add,adz,la,sa etc	
 -----------------------------------		
 		 when S2 =>
-				c_d2 <= "00";
+				c_d2 <= "00";  
+		                c_m2 <= '0';
 				if(op_v="0011") then
 					next_state := S4;
 				elsif (op_v="1000") then
 					next_state := S4;
 				elsif(op_v = "0110") then
+					next_state := S5;
+				elsif(op_v = "0111") then
+					c_m2 <= '1'; --!! add to datapath as well - m2 is connected to A2 in reg file, t2 has contents of treg(2 to 0) at 1 , t1 has contents of Ra at 0
 					next_state := S5;
 				end if;
 -----------------------------------
@@ -260,16 +253,33 @@ case state is --  making cases for states
 				if(op_v="0101") then
 					mem_wr <= '1';
 					c_m1 <= "01";
+					c_m3 <= '0'; --data in t1
 					next_state := S10;
-				
+				elsif(op_v="0111") then
+					if(unsigned(t_reg) < 8) then
+						mem_wr <= '1';
+						c_m1 <= "01"; -- a_in = t4 
+						c_m3 <= '1'; --  d_in = t2 ---t2 should be connected to 1 of m3 , do this in datapath 
+						next_state := S9;
+					else
+						reset_treg <= '1';
+						next_state <= S10;
+					end if;
 				end if;
 -----------------------------------
 		 when S9 => -- update t_reg using some flipflop type of thing for LA
 			if(op_v="0110") then
+				alu_op <= '0'; -- added this line
 				c_m4 <= "11";
-				c_m5 <= "10"
+				c_m5 <= "10" --changed from 01 to 10 
 				c_d4 <= "01";
-				next_state:= S7;
+				next_state:= S5; --changed from S7 to S5
+			elsif(op_v="0111") then
+				alu_op <= '0';
+				c_m4 <= "11"; --treg in
+				c_m5 <= "10" -- 000000000000..1 in 
+				c_d4 <= "01"; -- treg out 
+				next_state:= S2; 
 			end if;
 -----------------------------------
 		 when S10 =>
@@ -299,11 +309,14 @@ case state is --  making cases for states
 					next_state := S0;
 				end if;
 -----------------------------------
+		 when S12 =>
+-----------------------------------
 	
 if(clk'event and clk = '0') then
           if(rst = '1') then -- initially setting rst to 1 ensures that the state has a vaue for case analysis in the beginning 
              state <= S_res; 
           else
+				 last_state := state; -- !!check this!!
              state <= next_state; -- state transition based on case-wise logic in each clock cycle 
           end if;
      end if;
