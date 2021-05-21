@@ -10,7 +10,7 @@ entity Datapath is
 		clk, rst: in std_logic;
 		
 		--controls from FSM
-		c_assign, z_assign, rf_wr, alu_op, c_m6, c_m8, c_sext9, reset_treg: in std_logic;
+		c_assign, z_assign, rf_wr, alu_op, c_m6, c_m8, c_m2, c_m3, c_sext9, reset_treg: in std_logic;
 		c_m1, c_m4, c_m5, c_m7, c_m9: in std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
 		c_d1, c_d2, c_d3, c_d4: in std_logic_vector(1 downto 0);
 		
@@ -137,8 +137,8 @@ signal C, Z, gbg1: std_logic; -- initialise to "0" on reset
 signal t_reg2: std_logic_vector(15 downto 0); -- initialise to "000000000.." on reset
  
 --signals to connect the various components
-signal m7out: std_logic_vector(2 downto 0);
-signal m4out, m5out, m9out, d2in, d3in, d4in, se7out, se10out: std_logic_vector(15 downto 0);
+signal m7out, m2out: std_logic_vector(2 downto 0);
+signal m3out, m4out, m5out, m9out, d2in, d3in, d4in, se7out, se10out: std_logic_vector(15 downto 0);
 signal alu_c, alu_z: std_logic;
 signal pc_copy;
 
@@ -155,7 +155,7 @@ RF: RegisterFile port map(clk => clk,
 									rst => rst, 
 									wr => rf_wr, 
 									A1 => instr(11 downto 9), 
-									A2 => instr(8 downto 6), 
+									A2 => m2out, 
 									A3 => m7out, 
 									Din => m9out, 
 									Dout1 => d2in, 
@@ -185,6 +185,18 @@ m1: Mux16_4_1 port map(A => pc,
 								S1 => c_m1(1),
 								S0 => c_m1(0),
 								y => mem_addr);
+								
+m2: Mux3_2_1 port map(A => instr(8 downto 6),
+								B => t_reg(2 downto 0), 
+								S1 => c_m2(1),
+								S0 => c_m2(0),
+								y => m2out);
+								
+m3: Mux16_2_1 port map(A => t1,
+								B => t2, 
+								S1 => c_m3(1),
+								S0 => c_m3(0),
+								y => m3out);
 
 m4: Mux16_4_1 port map(A => t1,
 								B => t2, 
@@ -193,6 +205,7 @@ m4: Mux16_4_1 port map(A => t1,
 								S1 => c_m4(1),
 								S0 => c_m4(0),
 								y => m4out);
+								
 m5: Mux16_4_1 port map(A => t2,
 								B => t3, 
 								C => O16, 
@@ -290,7 +303,7 @@ d6: DeMux1_1_2 port map(A => alu_z,
 
 ra <= t1;
 rb <= t2;
-mem_datain <= t1;
+mem_datain <= m3out;
 C_val <= C;
 Z_val <= Z;
 instruction <= instr;

@@ -36,6 +36,24 @@ process(clk,state)
 	variable ra_v, rb_v: std_logic_vector(15 downto 0);
 	
 begin 
+
+-- State transitions:
+--1) ADD: S0 - S1 - S5 - 
+--2) ADC: S0 - S1 - 
+--3) ADZ: S0 - S1 - 
+--4) ADI: S0 - S1 - 
+--5) NDU: 
+--6) NDC:
+--7) NDZ:
+--8) LHI:
+--9) LW:
+--10) SW:
+--11) LA:
+--12) SA:
+--13) BEQ:
+--14) JAL:
+--15) JLR:
+
 case state is --  making cases for states 
        when S_res => -- this state resets all registers, memory write and read flags and z,car flags
 		 -- add logic
@@ -249,7 +267,7 @@ case state is --  making cases for states
 		 when S9 => -- update t_reg using some flipflop type of thing for LA
 			if(op_v="0110") then
 				c_m4 <= "11";
-				c_m5 <= "01"
+				c_m5 <= "10"
 				c_d4 <= "01";
 				next_state:= S7;
 			end if;
@@ -281,14 +299,11 @@ case state is --  making cases for states
 					next_state := S0;
 				end if;
 -----------------------------------
-		 when S12 =>
------------------------------------
 	
 if(clk'event and clk = '0') then
           if(rst = '1') then -- initially setting rst to 1 ensures that the state has a vaue for case analysis in the beginning 
              state <= S_res; 
           else
-				 last_state := state; -- !!check this!!
              state <= next_state; -- state transition based on case-wise logic in each clock cycle 
           end if;
      end if;
