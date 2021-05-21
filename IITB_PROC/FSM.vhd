@@ -170,7 +170,7 @@ case state is --  making cases for states
 			 -- add cases for adc,add,adz,la,sa etc	
 -----------------------------------		
 		 when S2 =>
-				c_d2 <= "00"; --!!check!!
+				c_d2 <= "00";  
 		                c_m2 <= '0';
 				if(op_v="0011") then
 					next_state := S4;
@@ -179,7 +179,7 @@ case state is --  making cases for states
 				elsif(op_v = "0110") then
 					next_state := S5;
 				elsif(op_v = "0111") then
-					c_m2 <= '1'; --!! add to datapath as well - m2 is connected to A2 in reg file, t2 has contents of treg(2 to 0), t1 has contents of Ra
+					c_m2 <= '1'; --!! add to datapath as well - m2 is connected to A2 in reg file, t2 has contents of treg(2 to 0) at 1 , t1 has contents of Ra at 0
 					next_state := S5;
 				end if;
 -----------------------------------
@@ -258,8 +258,8 @@ case state is --  making cases for states
 				elsif(op_v="0111") then
 					if(unsigned(t_reg) < 8) then
 						mem_wr <= '1';
-						c_m1 <= "10"; -- d_in = t2 ---t2 should be connected to 10 of m1 , do this in datapath
-						c_m3 <= '1'; -- a_in = t4 -- m3 connected to din of memory, should have t1 at 0 and t4 at 1, do this in datapath 
+						c_m1 <= "01"; -- a_in = t4 
+						c_m3 <= '1'; --  d_in = t2 ---t2 should be connected to 1 of m3 , do this in datapath 
 						next_state := S9;
 					else
 						reset_treg <= '1';
