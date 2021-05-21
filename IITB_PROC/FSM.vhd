@@ -153,6 +153,12 @@ case state is --  making cases for states
 					c_m5 <= "01";
 					c_d4 <= "00";
 					next_state := S8;
+			 elsif (op_v="0110") then
+					alu_op <= "01";
+					c_m4 <= "00";
+					c_m5 <= "11";
+					c_d4 <= "00";
+					next_state := S7;
 			 end if;
 			 -- add cases for adc,add,adz,la,sa etc	
 -----------------------------------		
@@ -162,6 +168,8 @@ case state is --  making cases for states
 					next_state := S4;
 				elsif (op_v="1000") then
 					next_state := S4;
+				elsif(op_v = "0110") then
+					next_state := S5;
 				end if;
 -----------------------------------
 		 when S4 =>
@@ -221,7 +229,7 @@ case state is --  making cases for states
 					next_state := S6;
 				elsif(op_v="0110") then
 					if(unsigned(t_reg) < 8) then
-						c_m1 <= "10";
+						c_m1 <= "01";
 						c_d1 <= "01";
 						next_state <= S6;
 					else
@@ -238,7 +246,7 @@ case state is --  making cases for states
 				
 				end if;
 -----------------------------------
-		 when S9 => -- update treg using some flipflop type of thing for LA
+		 when S9 => -- update t_reg using some flipflop type of thing for LA
 			if(op_v="0110") then
 				c_m4 <= "11";
 				c_m5 <= "01"
