@@ -13,7 +13,7 @@ entity FSM is
 		C_val, Z_val: in std_logic;
 	
 		--outs to datapath
-		c_assign, z_assign, rf_wr, alu_op, c_m6, c_m8, c_sext9, reset_treg: out std_logic:= '0';
+		c_assign, z_assign, rf_wr, alu_op, c_m2, c_m3, c_m6, c_m8, c_sext9, reset_treg: out std_logic:= '0';
 		c_m1, c_m4, c_m5, c_m7, c_m9: out std_logic_vector(1 downto 0):= "00";-- c_m2, c_m3 are not available as those muxes are not present as of now
 		c_d1, c_d2, c_d3, c_d4: out std_logic(1 downto 0);
 		
@@ -56,6 +56,7 @@ case state is --  making cases for states
 	    when S1 =>
 			 c_d2 <= "00";
 			 c_d3 <= "00";
+		         c_m2 <= '0';
 			 if(op_v="0001" or op_v="0011" or op_v="0100" or op_v="0101" or op_v="1100" or op_v="1000") then
 				next_state:= S4;
 			 elsif (op_v ="1100") then
@@ -154,21 +155,31 @@ case state is --  making cases for states
 					c_d4 <= "00";
 					next_state := S8;
 			 elsif (op_v="0110") then
-					alu_op <= "01";
-					c_m4 <= "00";
-					c_m5 <= "11";
-					c_d4 <= "00";
+					alu_op <= "01"; -- add
+					c_m4 <= "00"; -- t1 in
+					c_m5 <= "11"; -- treg in
+					c_d4 <= "00"; --t4 out
 					next_state := S7;
+			 elsif (op_v="0111") then
+					alu_op <= "01"; -- add
+					c_m4 <= "00"; -- t1 in
+					c_m5 <= "11"; --treg in 
+					c_d4 <= "00"; --t4 out
+					next_state := S8;
 			 end if;
 			 -- add cases for adc,add,adz,la,sa etc	
 -----------------------------------		
 		 when S2 =>
-				c_d2 <= "00";
+				c_d2 <= "00"; --!!check!!
+		                c_m2 <= '0';
 				if(op_v="0011") then
 					next_state := S4;
 				elsif (op_v="1000") then
 					next_state := S4;
 				elsif(op_v = "0110") then
+					next_state := S5;
+				elsif(op_v = "0111") then
+					c_m2 <= '1'; --!! add to datapath as well - m2 is connected to A2 in reg file, t2 has contents of treg(2 to 0), t1 has contents of Ra
 					next_state := S5;
 				end if;
 -----------------------------------
@@ -242,16 +253,33 @@ case state is --  making cases for states
 				if(op_v="0101") then
 					mem_wr <= '1';
 					c_m1 <= "01";
+					c_m3 <= '0'; --data in t1
 					next_state := S10;
-				
+				elsif(op_v="0111") then
+					if(unsigned(t_reg) < 8) then
+						mem_wr <= '1';
+						c_m1 <= "10"; -- d_in = t2 ---t2 should be connected to 10 of m1 , do this in datapath
+						c_m3 <= '1'; -- a_in = t4 -- m3 connected to din of memory, should have t1 at 0 and t4 at 1, do this in datapath 
+						next_state := S9;
+					else
+						reset_treg <= '1';
+						next_state <= S10;
+					end if;
 				end if;
 -----------------------------------
 		 when S9 => -- update t_reg using some flipflop type of thing for LA
 			if(op_v="0110") then
+				alu_op <= '0'; -- added this line
 				c_m4 <= "11";
-				c_m5 <= "01"
+				c_m5 <= "10" --changed from 01 to 10 
 				c_d4 <= "01";
-				next_state:= S7;
+				next_state:= S5; --changed from S7 to S5
+			elsif(op_v="0111") then
+				alu_op <= '0';
+				c_m4 <= "11"; --treg in
+				c_m5 <= "10" -- 000000000000..1 in 
+				c_d4 <= "01"; -- treg out 
+				next_state:= S2; 
 			end if;
 -----------------------------------
 		 when S10 =>
