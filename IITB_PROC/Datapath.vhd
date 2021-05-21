@@ -10,8 +10,9 @@ entity Datapath is
 		clk, rst: in std_logic;
 		
 		--controls from FSM
-		cz_assign, rf_wr, alu_op, c_m6, c_m8, c_sext9: in std_logic;
+		c_assign, z_assign, rf_wr, alu_op, c_m6, c_m8, c_sext9: in std_logic;
 		c_m1, c_m4, c_m5, c_m7, c_m8, c_m9: in std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
+		c_d1, c_d2, c_d3, c_d4: in std_logic;
 		
 		-- ins from memory
 		mem_dataout: instd_logic_vector(15 downto 0);
@@ -20,7 +21,8 @@ entity Datapath is
 		mem_addr, mem_datain: out std_logic_vector(15 downto 0);
 		
 		--outs to FSM
-		instruction: out std_logic_vector(15 downto 0)
+		instruction: out std_logic_vector(15 downto 0);
+		C_val, Z_val: out std_logic;
 	);
 end entity;
 
@@ -30,7 +32,7 @@ architecture struc of Datapath is
 component ALU is
 	port(
 		X, Y: in std_logic_vector(15 downto 0);
-		op, nothing: in std_logic;
+		op: in std_logic;
 		--not complete(have to set nothing flag, also have to take C_in, Z_in input, to maintain states clk, rst too)
 		Cout, Zout: out std_logic;
 		Z: out std_logic_vector(15 downto 0)
@@ -83,7 +85,190 @@ component Mux16_4_1 is
 	);
 end component;
 
+-- 7. 3bit 2x1 Mux
+component Mux16_2_1 is
+	port( 
+		A, B : in std_logic_vector(2 downto 0);
+		S0 : in std_logic;
+		y : out std_logic_vector(2 downto 0) 
+	);
+end component;
+
+-- 8. 3bit 4x1Mux
+component Mux16_4_1 is
+	port( 
+		A, B, C, D : in std_logic_vector(2 downto 0);
+		S1, S0 : in std_logic;
+		y : out std_logic_vector(2 downto 0) 
+	);
+end component;
+
+-- 9. 16bit 1x4 Demux
+component DeMux16_1_4 is 
+	port(
+		A: in std_logic_vector(15 downto 0);
+		S1, S0: in std_logic;
+		O0, O1, O2, O3: out std_logic_vector(15 downto 0)
+	);
+end component;
+
+-- 10. 1bit 1x2 Demux
+component DeMux1_1_2 is
+	port(
+		A, S: in std_logic;
+		O0, O1: out std_logic
+	);
+end component;
+
+-- temporary registers
+signal t1, t2, t3, t4, t5, gbg16: std_logic_vector(15 downto 0);
+signal pc, instr : std_logic(15 downto 0); -- initialise to "0" on reset
+signal C, Z, gbg1: std_logic; -- initialise to "0" on reset
+signal t_reg: std_logic(15 downto 0); -- initialise to "000000000.." on reset
+ 
+--signals to connect the various components
+signal m7out: std_logic_vector(2 downto 0);
+signal m4out, m5out, m9out, d2in, d3in, d4in: std_logic_vector(15 downto 0);
+signal alu_c, alu_z: std_logic;
+
+--constants
+constant Z16 :  std_logic_vector(15 downto 0) := (others => '0');
+constant O16 :  std_logic_vector(15 downto 0) := (0 => '1', others => '0');
+
+begin
 
 
-	
+-- main components
+RF: RegisterFile port map(clk => clk, 
+									rst => rst, 
+									wr => rf_wr, 
+									A1 => instr(11 downto 9), 
+									A2 => instr(8 downto 6), 
+									A3 => m7out, 
+									Din => m9out, 
+									Dout1 => d2in, 
+									Dout2 => d3in); 
+
+alu_main: ALU port map(X => m4out,
+								Y => m5out,
+								op => alu_op,
+								Cout => alu_c,
+								Zout => alu_z,
+								Z => d4in);
+
+se7: sext_9bit port map(X => instr(8 downto 0),
+								s_type => c_sext9,
+								Y => se7out);
+
+se10: sext_6bit port map(X => instr(5 downto 0),
+									Y => se10out));
+
+--Muxes
+m1: Mux16_4_1 port map(A => pc,
+								B => t4, 
+								C => Z16, 
+								D => Z16,
+								S1 => c_m1(1),
+								S0 => c_m1(0),
+								y => mem_addr);
+
+m4: Mux16_4_1 port map(A => t1,
+								B => t2, 
+								C => pc, 
+								D => t_reg,
+								S1 => c_m4(1),
+								S0 => c_m4(0),
+								y => m4out);
+m5: Mux16_4_1 port map(A => t2,
+								B => t3, 
+								C => O16, 
+								D => Z16,
+								S1 => c_m5(1),
+								S0 => c_m5(0),
+								y => m5out);
+
+-- for sign extended input to be stored in t3 depending on control c_m6								
+m6: Mux16_2_1 port map(A => se7out,
+								B => se10out,
+								S0 => c_m6,
+								y => t3);
+								
+
+
+m7: Mux3_4_1 port map(A => instr(11 downto 9),
+								B => instr(5 downto 3), 
+								C => t_reg(2 downto 0), 
+								D => Z16, 
+								S1 => c_m7(1), 
+								S0 => c_m7(0), 
+								y => m7out);
+
+-- assigning PC with the new value
+m8: Mux16_2_1 port map(A => t4,
+								B => t2,
+								S0 => c_m8,
+								y => pc);
+
+
+m9: Mux16_4_1 port map(A => t3,
+								B => t4, 
+								C => t5, 
+								D => Z16,
+								S1 => c_m9(1),
+								S0 => c_m9(0)
+								y => m9out);
+
+--Demuxes
+d1: DeMux16_1_4 port map(A => mem_dataout,
+									S1 => c_d1(1),
+									S0 => c_d0(1),
+									O0 => instr,
+									O1 => t5,
+									O2 => gbg16,
+									O3 => gbg16);
+									
+
+d2: DeMux16_1_4 port map(A => d2in, 
+									S1 => c_d2(1),
+									S0 => c_d2(0),
+									O0 => t1,
+									O1 => gbg16,
+									O2 => gbg16,
+									O3 => gbg16);
+									
+d3: DeMux16_1_4 port map(A => d3in,
+									S1 => c_d3(1),
+									S0 => c_d3(0),
+									O0 => t2,
+									O1 => gbg16,
+									O2 => gbg16,
+									O3 => gbg16);
+									
+
+d4: DeMux16_1_4 port map(A => d4in,
+									S1 => c_d4(1),
+									S0 => c_d4(0),
+									O0 => t4,
+									O1 => t_reg,
+									O2 => gbg16,
+									O3 => gbg16);
+
+-- modifying the C flag
+d5: DeMux1_1_2 port map(A => alu_c, 
+								S => c_assign,
+								O0 => gbg1,
+								O1 => C);
+								
+-- modifying the Z flag
+d6: DeMux1_1_2 port map(A => alu_z, 
+								S => z_assign,
+								O0 => gbg1,
+								O1 => Z);
+
+mem_datain <= t1;
+C_val <= C;
+Z_val <= Z;
+instruction <= instr;
+								
 end struc; 
+
