@@ -1,8 +1,11 @@
 library work;
 use work.all;
 
-library IEEE;
-use IEEE.std_logic_1164.all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_textio.all;
+use ieee.numeric_std.all;
+use std.textio.all;
 
 entity testbench_read is  --- testbench entity definition
 end testbench_read;
@@ -26,8 +29,8 @@ architecture tb of testbench_read is
 		port(
 			clk: std_logic; 
 			wr, rd: in std_logic;
-			A_in, D_in: in std_logic_vector(15 downto 0);
-			Dout: out std_logic_vector(15 downto 0)
+			Addr_in, D_in: in std_logic_vector(15 downto 0);
+			D_out: out std_logic_vector(15 downto 0)
 		);
 	end component;
 	
@@ -36,7 +39,7 @@ begin
 	test_instance: IITB_PROC
 		port map (clk => clock, rst => reset, op => output);
 	mem_instance: Memory
-		port map (clk => clock, wr => wr_sig, rd => rd_sig, A_in => A_in_sig, D_in => D_in_sig, D_out => D_out_sig)
+		port map (clk => clock, wr => wr_sig, rd => rd_sig, Addr_in => A_in_sig, D_in => D_in_sig, D_out => D_out_sig);
 		
 		process 
 		file in_file : text open read_mode is "add file path here";

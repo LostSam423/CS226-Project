@@ -12,14 +12,15 @@ end entity;
 architecture struc of ff_register is 
 	component DFlipFlop is
 		port(
-			port (clk, rst, d: in std_logic; q: out std_logic);
+			clk, rst, d: in std_logic; 
+			s: out std_logic
 		);
 	end component;
 	
 	begin
 	
 	ff16: for i in 15 downto 0 generate
-		ff: port map(clk => clk, rst => rst, d=>d(i), s=> s(i));		
+		ff: DFlipFlop port map(clk => clk, rst => rst, d=>d(i), s => s(i));		
 	end generate;
 	
 end struc;

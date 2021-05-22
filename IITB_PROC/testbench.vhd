@@ -25,7 +25,7 @@ begin
 		port map (clk => clock, rst => reset, op => output);
 
 	
-    clock <= NOT clk AFTER 5 NS;
+    clock <= NOT clock AFTER 5 NS;
 
     reset <= '1', 
             '0' AFTER 20 NS;

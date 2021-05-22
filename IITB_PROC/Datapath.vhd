@@ -10,7 +10,7 @@ entity Datapath is
 		clk, rst: in std_logic;
 		
 		--controls from FSM
-		c_assign, z_assign, rf_wr, alu_op, c_m6, c_m8, c_m2, c_m3, c_sext9, reset_treg: in std_logic;
+		c_assign, z_assign, rf_wr, alu_op, c_m2, c_m3, c_m6, c_m8, c_sext9, reset_treg: in std_logic;
 		c_m1, c_m4, c_m5, c_m7, c_m9: in std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
 		c_d1, c_d2, c_d3, c_d4: in std_logic_vector(1 downto 0);
 		
@@ -134,13 +134,12 @@ signal t1, t2, t3, t4, t5, gbg16: std_logic_vector(15 downto 0);
 signal pc: std_logic_vector(15 downto 0) := (others => '0');
 signal instr : std_logic_vector(15 downto 0); -- initialise to "0" on reset
 signal C, Z, gbg1: std_logic; -- initialise to "0" on reset
-signal t_reg2: std_logic_vector(15 downto 0); -- initialise to "000000000.." on reset
+signal t_reg2, t_regc: std_logic_vector(15 downto 0); -- initialise to "000000000.." on reset
  
 --signals to connect the various components
 signal m7out, m2out: std_logic_vector(2 downto 0);
 signal m3out, m4out, m5out, m9out, d2in, d3in, d4in, se7out, se10out: std_logic_vector(15 downto 0);
 signal alu_c, alu_z: std_logic;
-signal pc_copy;
 
 --constants
 constant Z3: std_logic_vector(2 downto 0) := (others => '0');
@@ -176,7 +175,7 @@ se10: sext_6bit port map(X => instr(5 downto 0),
 									Y => se10out);
 
 									
-ffr: ff_register port map(clk=>clk, rst => reset_treg, d=> t_reg2, s=> t_reg);
+ffr: ff_register port map(clk=>clk, rst => reset_treg, d=> t_reg2, s=> t_regc);
 --Muxes
 m1: Mux16_4_1 port map(A => pc,
 								B => t4, 
@@ -187,21 +186,19 @@ m1: Mux16_4_1 port map(A => pc,
 								y => mem_addr);
 								
 m2: Mux3_2_1 port map(A => instr(8 downto 6),
-								B => t_reg(2 downto 0), 
-								S1 => c_m2(1),
-								S0 => c_m2(0),
+								B => t_regc(2 downto 0), 
+								S0 => c_m2,
 								y => m2out);
 								
 m3: Mux16_2_1 port map(A => t1,
 								B => t2, 
-								S1 => c_m3(1),
-								S0 => c_m3(0),
+								S0 => c_m3,
 								y => m3out);
 
 m4: Mux16_4_1 port map(A => t1,
 								B => t2, 
 								C => pc, 
-								D => t_reg,
+								D => t_regc,
 								S1 => c_m4(1),
 								S0 => c_m4(0),
 								y => m4out);
@@ -225,7 +222,7 @@ m6: Mux16_2_1 port map(A => se7out,
 m7: Mux3_4_1 port map(A => instr(11 downto 9),
 								B => instr(8 downto 6), 
 								C => instr(5 downto 3), 
-								D => t_reg(2 downto 0), 
+								D => t_regc(2 downto 0), 
 								S1 => c_m7(1), 
 								S0 => c_m7(0), 
 								y => m7out);
@@ -301,6 +298,7 @@ d6: DeMux1_1_2 port map(A => alu_z,
 --		end if;
 --end process;
 
+t_reg <= t_regc;
 ra <= t1;
 rb <= t2;
 mem_datain <= m3out;
