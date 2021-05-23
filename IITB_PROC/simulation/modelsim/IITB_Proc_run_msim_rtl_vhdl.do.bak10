@@ -23,9 +23,9 @@ vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/DFlipFlop.vhd}
 vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd}
 vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ALU.vhd}
 vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/adder_16bit.vhd}
-vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd}
 vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Half-Adder.vhd}
 vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Full-Adder.vhd}
+vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd}
 
 vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd}
 

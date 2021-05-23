@@ -33,7 +33,7 @@ begin
 						pco => pc);
 	 
 	 process
-		file in_file : text open read_mode is "D:\IITB CSE\sem4\CS 226\Project\IITB_PROC\bin.txt";
+		file in_file : text open read_mode is "D:\IITB CSE\sem4\CS 226\Project\IITB_PROC\bin2.txt";
 		variable in_line : line;
 		variable in_var : std_logic_vector(15 downto 0);
 	 begin

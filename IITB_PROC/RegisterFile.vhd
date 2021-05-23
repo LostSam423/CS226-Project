@@ -17,7 +17,7 @@ end entity;
 architecture behave of RegisterFile is 
  
 type RF is array(0 to 7) of std_logic_vector(15 downto 0);
-signal registers: RF:= (others => '0');
+signal registers: RF:= (others => "0000000000000000");
 
 begin 
 Dout1 <= registers(to_integer(unsigned(A1)));

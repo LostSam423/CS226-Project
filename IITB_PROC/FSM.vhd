@@ -97,16 +97,23 @@ case state is --  making cases for states
 			elsif (vop="0110") then
 				vc_m11 := "11";
 				next_state := S8;
+			elsif (vop="0101") then
+				next_state := S3;
 			elsif (vop="0111") then
 				vc_m11 := "11";
 				next_state := S9;
 			elsif (vop="1100") then
 				next_state := S10;
-			elsif(vop="1000" or vop="1001") then
+			elsif(vop="1000") then
 				vc_rf := '1';
+				vc_m6 := '0';
 				vc_m7 := "00";
 				vc_m9 := "11";
 				next_state := S10;
+			elsif (vop="1001") then
+				vc_rf := '1';
+				vc_m7 := "00";
+				vc_m9 := "11";
 			end if;
 -----------------------------------		 
 	when S5 =>

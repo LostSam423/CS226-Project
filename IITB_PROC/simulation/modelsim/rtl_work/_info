@@ -23,9 +23,9 @@ VzOC=;gZlDfA34FzV9VNeG1
 !s100 E9;_f0MlzWMG1F4A2=SlB0
 Z6 OV;C;2020.1;71
 31
-Z7 !s110 1621760661
+Z7 !s110 1621762534
 !i10b 1
-Z8 !s108 1621760661.000000
+Z8 !s108 1621762534.000000
 Z9 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/adder_16bit.vhd|
 Z10 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/adder_16bit.vhd|
 !i113 1
@@ -106,11 +106,11 @@ V`DjC7W>@8jL3mVDBKgXTj3
 !s100 mj^C5mg39J=dSb3k0Og7T2
 R6
 31
-R7
+Z22 !s110 1621762533
 !i10b 1
-Z22 !s108 1621760660.000000
-Z23 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd|
-Z24 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd|
+Z23 !s108 1621762533.000000
+Z24 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd|
+Z25 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd|
 !i113 1
 R11
 R12
@@ -126,31 +126,31 @@ VcTPlaY9bzdFWA4FdFlz3R0
 !s100 f:TA0Q`3[U>4<9kEUz:j>0
 R6
 31
-R7
-!i10b 1
 R22
+!i10b 1
 R23
 R24
+R25
 !i113 1
 R11
 R12
 Edff_register
-Z25 w1621707027
+Z26 w1621707027
 R2
 R3
 !i122 13
 R0
-Z26 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd
-Z27 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd
+Z27 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd
+Z28 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd
 l0
 L4 1
 V==Im`8m7LEPCQfMjo1=@g2
 !s100 TmASan^=DoFHiG8XcbkBE0
 R6
 31
-Z28 !s110 1621760660
-!i10b 1
 R22
+!i10b 1
+R23
 Z29 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd|
 Z30 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd|
 !i113 1
@@ -167,9 +167,9 @@ V88dJn`MNVOEALPg5TOK5W3
 !s100 U9X1<VA?b=NnOfFiXn9283
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 R29
 R30
 !i113 1
@@ -189,9 +189,9 @@ Va`^eV]5Bn]DzR_9TKGXRV3
 !s100 7YA^fk7XkDWk97l6MGOVV1
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 Z35 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/DFlipFlop.vhd|
 Z36 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/DFlipFlop.vhd|
 !i113 1
@@ -208,9 +208,9 @@ VcFl`_Pa8mA?Qj]lJ`KP9<3
 !s100 NAQ5mGGOA0mG:OQ]aLLTz1
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 R35
 R36
 !i113 1
@@ -231,9 +231,9 @@ V<2m@>^aMTCInP==bI_IeN1
 !s100 zhEBHn_Bi2[=^jT>N4J[L0
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 Z40 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/FSM.vhd|
 Z41 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/FSM.vhd|
 !i113 1
@@ -251,9 +251,9 @@ VS;;Zilm0>dLCl30^h8[Ok0
 !s100 Mjd@P>Y]4BZcSWf[9_EXR2
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 R40
 R41
 !i113 1
@@ -263,7 +263,7 @@ Efull_adder
 Z42 w1621590013
 R2
 R3
-!i122 19
+!i122 20
 R0
 Z43 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Full-Adder.vhd
 Z44 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Full-Adder.vhd
@@ -285,7 +285,7 @@ Aarch
 R2
 R3
 DEx4 work 10 full_adder 0 22 X1kOU>XzF23ziOHHOMlLk2
-!i122 19
+!i122 20
 l30
 L14 29
 VckAK^l_F?SCO^32nZ_WSH0
@@ -304,7 +304,7 @@ Ehalf_adder
 Z47 w1621589797
 R2
 R3
-!i122 18
+!i122 19
 R0
 Z48 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Half-Adder.vhd
 Z49 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Half-Adder.vhd
@@ -326,7 +326,7 @@ Aarch
 R2
 R3
 DEx4 work 10 half_adder 0 22 jlmYZMXnG5<ojF=485fWO3
-!i122 18
+!i122 19
 l22
 L12 21
 VS@0<;TQ5;zn8<n;fZP83a0
@@ -356,9 +356,9 @@ V6;UELRkR@8[4dbGhiS`MA1
 !s100 Fo^:]93_[N1=QmJP2B:390
 R6
 31
-Z55 !s110 1621760659
+Z55 !s110 1621762532
 !i10b 1
-Z56 !s108 1621760659.000000
+Z56 !s108 1621762531.000000
 Z57 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd|
 Z58 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd|
 !i113 1
@@ -385,7 +385,7 @@ R58
 R11
 R12
 Ememory
-Z59 w1621760596
+Z59 w1621762474
 R19
 R2
 R3
@@ -399,9 +399,9 @@ VjVCYWmmneifhbk=^6Le4<2
 !s100 2fYHL?8:lG<]fUjZ:]dl`0
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 Z62 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/memory.vhd|
 Z63 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/memory.vhd|
 !i113 1
@@ -413,15 +413,15 @@ R2
 R3
 DEx4 work 6 memory 0 22 jVCYWmmneifhbk=^6Le4<2
 !i122 11
-l26
-L14 26
-VEjiim1?g:?kL3GdRF^Y`g0
-!s100 F8>4Ee8j7OYD4aL]bAoMe1
+l25
+L14 24
+VcfjzeCZR77I_4;6Ih>=aR3
+!s100 maU9WW[]J1d=<FE1aUGbF2
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 R62
 R63
 !i113 1
@@ -441,9 +441,9 @@ VLF6WADh2i;`_CjJK=QS5M1
 !s100 [hBj0lG^0zUKafW[ACA2S1
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 Z67 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_2_1.vhdl|
 Z68 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_2_1.vhdl|
 !i113 1
@@ -460,9 +460,9 @@ V?jd;KLSH6OiMlNKV5mml63
 !s100 bdJ^]IgAVdIPVLDf6jjKN3
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 R67
 R68
 !i113 1
@@ -482,9 +482,9 @@ VDG:2AC9a;cbSC@L?HR]Al2
 !s100 dLO^WQMii8S:`_aMK=AmH2
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 Z73 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_4_1.vhdl|
 Z74 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_4_1.vhdl|
 !i113 1
@@ -501,9 +501,9 @@ V6Hk@Q^jlSzjVFfUf:]YW:2
 !s100 FCRljUR<a=]4=@^n]P3hm0
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 R73
 R74
 !i113 1
@@ -523,9 +523,9 @@ VV7e`Nn`ZZA7oNKi8[2PC;3
 !s100 DTRR4CVoh[e0`E`T_l^MW0
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 Z78 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_2_1.vhdl|
 Z79 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_2_1.vhdl|
 !i113 1
@@ -542,9 +542,9 @@ VUGU`NdO_T`BHPnW><7`R82
 !s100 YDbL<`C_V2:Ue=GB6=VJb0
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 R78
 R79
 !i113 1
@@ -564,9 +564,9 @@ Vi03A?YzYhiAn_Y5?9`YGW1
 !s100 ID;^<o78eV=kXJZP64M790
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 Z83 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_4_1.vhdl|
 Z84 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_4_1.vhdl|
 !i113 1
@@ -583,9 +583,9 @@ V]Cd`9L70YgYkCWQ^<<n_V0
 !s100 a=BPWAZEzc4zNgmG9EmR[0
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
+R23
 R83
 R84
 !i113 1
@@ -605,11 +605,11 @@ Vlc0Z>oUEOPKa3b0;^M^Y80
 !s100 kZeS7MAjEAEK4g2[;gN493
 R6
 31
-R28
-!i10b 1
 R22
-Z88 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_2_1.vhdl|
-Z89 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_2_1.vhdl|
+!i10b 1
+Z88 !s108 1621762532.000000
+Z89 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_2_1.vhdl|
+Z90 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_2_1.vhdl|
 !i113 1
 R11
 R12
@@ -624,22 +624,22 @@ V5DMB9DPl4>:eRKA<k;>h03
 !s100 ]lFn25JbC>maWLQHSODVg3
 R6
 31
-R28
-!i10b 1
 R22
+!i10b 1
 R88
 R89
+R90
 !i113 1
 R11
 R12
 Emux3_4_1
-Z90 w1621590068
+Z91 w1621590068
 R2
 R3
 !i122 5
 R0
-Z91 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl
-Z92 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl
+Z92 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl
+Z93 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl
 l0
 L7 1
 VB2b27P@dlM[6<m<Zg`46I1
@@ -648,9 +648,9 @@ R6
 31
 R55
 !i10b 1
-R56
-Z93 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl|
-Z94 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl|
+R88
+Z94 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl|
+Z95 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl|
 !i113 1
 R11
 R12
@@ -667,20 +667,20 @@ R6
 31
 R55
 !i10b 1
-R56
-R93
+R88
 R94
+R95
 !i113 1
 R11
 R12
 Enand_op
-Z95 w1621590162
+Z96 w1621590162
 R2
 R3
 !i122 4
 R0
-Z96 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd
-Z97 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd
+Z97 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd
+Z98 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd
 l0
 L6 1
 VFf4DoO39GF55;LA0cE?^A0
@@ -689,9 +689,9 @@ R6
 31
 R55
 !i10b 1
-R56
-Z98 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd|
-Z99 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd|
+R88
+Z99 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd|
+Z100 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd|
 !i113 1
 R11
 R12
@@ -708,21 +708,21 @@ R6
 31
 R55
 !i10b 1
-R56
-R98
+R88
 R99
+R100
 !i113 1
 R11
 R12
 Eregisterfile
-Z100 w1621730460
+Z101 w1621761900
 R19
 R2
 R3
 !i122 3
 R0
-Z101 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd
-Z102 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd
+Z102 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd
+Z103 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd
 l0
 L8 1
 VF@11kWlTY]:mWbg2]0T9Y3
@@ -731,9 +731,9 @@ R6
 31
 R55
 !i10b 1
-R56
-Z103 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd|
-Z104 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd|
+R88
+Z104 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd|
+Z105 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd|
 !i113 1
 R11
 R12
@@ -745,26 +745,26 @@ DEx4 work 12 registerfile 0 22 F@11kWlTY]:mWbg2]0T9Y3
 !i122 3
 l22
 L17 23
-Vc`<n=>CbOKP3:[gO@5HFf2
-!s100 GKNf`Wa>hW4<BfVUT8bPX3
+V]D5NX3OLZJ<gTQTYRCWQW1
+!s100 Ld@37g9HV6mYXe2]7F8;^0
 R6
 31
 R55
 !i10b 1
-R56
-R103
+R88
 R104
+R105
 !i113 1
 R11
 R12
 Esext_6bit
-Z105 w1621591668
+Z106 w1621591668
 R2
 R3
 !i122 2
 R0
-Z106 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd
-Z107 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd
+Z107 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd
+Z108 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd
 l0
 L6 1
 VOTZ?XOBGPXOL_]leaLQK@2
@@ -773,9 +773,9 @@ R6
 31
 R55
 !i10b 1
-R56
-Z108 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd|
-Z109 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd|
+R88
+Z109 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd|
+Z110 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd|
 !i113 1
 R11
 R12
@@ -792,20 +792,20 @@ R6
 31
 R55
 !i10b 1
-R56
-R108
+R88
 R109
+R110
 !i113 1
 R11
 R12
 Esext_9bit
-Z110 w1621731719
+Z111 w1621731719
 R2
 R3
 !i122 1
 R0
-Z111 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd
-Z112 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd
+Z112 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd
+Z113 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd
 l0
 L6 1
 VTB7@h?^[>:Tm9HVH7E@7i0
@@ -814,9 +814,9 @@ R6
 31
 R55
 !i10b 1
-R56
-Z113 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd|
-Z114 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd|
+R88
+Z114 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd|
+Z115 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd|
 !i113 1
 R11
 R12
@@ -833,22 +833,22 @@ R6
 31
 R55
 !i10b 1
-R56
-R113
+R88
 R114
+R115
 !i113 1
 R11
 R12
 Etestbench
-Z115 w1621757913
+Z116 w1621761710
 R19
-Z116 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
+Z117 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
 R2
 R3
 !i122 21
 R0
-Z117 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd
-Z118 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd
+Z118 8D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd
+Z119 FD:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd
 l0
 L10 1
 V]bdlmBc;ib]VmNcXX<55?1
@@ -858,29 +858,29 @@ R6
 R7
 !i10b 1
 R8
-Z119 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd|
-Z120 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd|
+Z120 !s90 -reportprogress|300|-93|-work|work|D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd|
+Z121 !s107 D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd|
 !i113 1
 R11
 R12
 Atb
 R19
-R116
+R117
 R2
 R3
-Z121 DEx4 work 9 testbench 0 22 ]bdlmBc;ib]VmNcXX<55?1
+Z122 DEx4 work 9 testbench 0 22 ]bdlmBc;ib]VmNcXX<55?1
 !i122 21
 l27
-Z122 L13 63
-Z123 VTfH6>IDKF8PLgQPbCQj@E0
-Z124 !s100 DRf3LzSAZA]?>_SBa@Sc]3
+Z123 L13 63
+Z124 VXbQ`LS0dWKdGn9BU4MDe80
+Z125 !s100 la?kW8P@1i=mX^LZA9>TI0
 R6
 31
 R7
 !i10b 1
 R8
-R119
 R120
+R121
 !i113 1
 R11
 R12
