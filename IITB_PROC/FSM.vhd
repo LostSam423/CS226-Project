@@ -114,6 +114,7 @@ case state is --  making cases for states
 				vc_rf := '1';
 				vc_m7 := "00";
 				vc_m9 := "11";
+				next_state := S10;
 			end if;
 -----------------------------------		 
 	when S5 =>
