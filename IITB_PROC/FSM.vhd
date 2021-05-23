@@ -14,7 +14,7 @@ entity FSM is
 		Cin, Zin: in std_logic;
 	
 		--outs to datapath
-		c_rf, c_alu, c_m1, c_m2, c_m3, c_m6, c_m8, c_m10, c_m12, c_sext9: out std_logic;
+		c_rf, c_alu, c_m1, c_m2, c_m3, c_m6, c_m8, c_m10, c_m12, c_m13, c_sext9: out std_logic;
 		c_m4, c_m5, c_m7, c_m9, c_m11: out std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
 		c_T1, c_T2, c_T3, c_IR, c_PC, c_C, c_Z: out std_logic;
 		
@@ -35,7 +35,7 @@ process(clk, rst, state, Cin, Zin, T1, T2, instruction)
 	variable next_state: FSMState;
 	variable vop: std_logic_vector(3 downto 0);
 	variable vc_m4, vc_m5, vc_m7, vc_m9, vc_m11: std_logic_vector(1 downto 0);
-	variable vc_rf, vc_alu, vc_m1, vc_m2, vc_m3, vc_m6, vc_m8, vc_m10, vc_m12, vc_sext9,
+	variable vc_rf, vc_alu, vc_m1, vc_m2, vc_m3, vc_m6, vc_m8, vc_m10, vc_m12, vc_m13, vc_sext9,
 				vc_T1, vc_T2, vc_T3, vc_IR, vc_PC, vc_C, vc_Z, vmem_wr: std_logic;
 	
 begin 
@@ -61,6 +61,7 @@ begin
 	vc_m10	:= '0';
 	vc_m11	:= "11";
 	vc_m12	:= '0';
+	vc_m13	:= '0';
 	vc_sext9 := '0';
 	vop := instruction(15 downto 12);
 	next_state := S0;
@@ -253,6 +254,8 @@ case state is --  making cases for states
 			 elsif(vop="0100") then
 					vc_m7 := "00";
 					vc_m9 := "00";
+					vc_Z := '1';
+					vc_m13 := '1';
 					next_state := S10;
 			 end if;
 -----------------------------------
@@ -364,6 +367,7 @@ end case;
 	c_m10		<= vc_m10;
 	c_m11		<= vc_m11;
 	c_m12		<= vc_m12;
+	c_m13 	<= vc_m13;
 	c_sext9 	<= vc_sext9;
 
 	if(clk'event and clk = '0') then
