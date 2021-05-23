@@ -20,6 +20,8 @@ type RF is array(0 to 7) of std_logic_vector(15 downto 0);
 signal registers: RF;
 
 begin 
+Dout1 <= registers(to_integer(unsigned(A1)));
+Dout2 <= registers(to_integer(unsigned(A2)));
 
 process (clk)
 	begin 
@@ -33,10 +35,5 @@ process (clk)
 			end if;
 		end if;
 end process;
-
-process (A1, A2)
-	begin
-		Dout1 <= registers(to_integer(unsigned(A1)));
-		Dout2 <= registers(to_integer(unsigned(A2)));
-	end process;		  
+		  
 end behave;

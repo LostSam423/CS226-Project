@@ -10,9 +10,9 @@ entity Datapath is
 		clk, rst: in std_logic;
 		
 		--controls from FSM
-		c_assign, z_assign, rf_wr, alu_op, c_m2, c_m3, c_m6, c_m8, c_sext9, reset_treg: in std_logic;
-		c_m1, c_m4, c_m5, c_m7, c_m9: in std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
-		c_d1, c_d2, c_d3, c_d4: in std_logic_vector(1 downto 0);
+		c_rf, c_alu, c_m1, c_m2, c_m3, c_m6, c_m8, c_m10, c_m12, c_sext9: in std_logic;
+		c_m4, c_m5, c_m7, c_m9, c_m11: in std_logic_vector(1 downto 0); -- c_m2, c_m3 are not available as those muxes are not present as of now
+		c_T1, c_T2, c_T3, c_IR, c_PC, c_C, c_Z: in std_logic;
 		
 		-- ins from memory
 		mem_dataout: in std_logic_vector(15 downto 0);
@@ -21,8 +21,8 @@ entity Datapath is
 		mem_addr, mem_datain: out std_logic_vector(15 downto 0);
 		
 		--outs to FSM
-		instruction, ra, rb, t_reg: out std_logic_vector(15 downto 0);
-		C_val, Z_val: out std_logic
+		instruction, T1, T2, T3: out std_logic_vector(15 downto 0);
+		Cout, Zout: out std_logic
 	);
 end entity;
 
@@ -103,43 +103,27 @@ component Mux3_4_1 is
 	);
 end component;
 
--- 9. 16bit 1x4 Demux
-component DeMux16_1_4 is 
-	port(
-		A: in std_logic_vector(15 downto 0);
-		S1, S0: in std_logic;
-		O0, O1, O2, O3: out std_logic_vector(15 downto 0)
+--9. DFlipFlop
+component DFlipFlop is
+	port (
+		clk, rst, wr, i: in std_logic;
+		o: out std_logic
 	);
 end component;
 
--- 10. 1bit 1x2 Demux
-component DeMux1_1_2 is
+-- 10. FF register
+component dff_register is
 	port(
-		A, S: in std_logic;
-		O0, O1: out std_logic
+		clk, rst, wr: in std_logic;
+		i: in std_logic_vector(15 downto 0);
+		o: out std_logic_vector(15 downto 0)
 	);
 end component;
-
--- 11. FF register
-component ff_register is
-	port(
-		clk, rst: in std_logic;
-		d: in std_logic_vector(15 downto 0);
-		s: out std_logic_vector(15 downto 0)
-	);
-end component;
-
--- temporary registers
-signal t1, t2, t3, t4, t5, gbg16: std_logic_vector(15 downto 0);
-signal pc: std_logic_vector(15 downto 0) := (others => '0');
-signal instr : std_logic_vector(15 downto 0); -- initialise to "0" on reset
-signal C, Z, gbg1: std_logic; -- initialise to "0" on reset
-signal t_reg2, t_regc: std_logic_vector(15 downto 0); -- initialise to "000000000.." on reset
  
 --signals to connect the various components
 signal m7out, m2out: std_logic_vector(2 downto 0);
-signal m3out, m4out, m5out, m9out, d2in, d3in, d4in, se7out, se10out: std_logic_vector(15 downto 0);
-signal alu_c, alu_z: std_logic;
+signal aluout, t1out, t2out, t3out, pcin, pcout, rfd1, rfd2, m3out, m4out, m5out, m6out, m9out, m10out, m11out, m12out, se7out, se10out, instr: std_logic_vector(15 downto 0);
+signal aluout_c, aluout_z: std_logic;
 
 --constants
 constant Z3: std_logic_vector(2 downto 0) := (others => '0');
@@ -148,163 +132,128 @@ constant O16 :  std_logic_vector(15 downto 0) := (0 => '1', others => '0');
 
 begin
 
+--temporary registers
+temp1: dff_register port map(clk => clk, rst => rst, wr => c_T1, i => m10out, o => t1out);
+temp2: dff_register port map(clk => clk, rst => rst, wr => c_T2, i => m11out, o => t2out);
+temp3: dff_register port map(clk => clk, rst => rst, wr => c_T3, i => m12out, o => t3out);
+
+--instruction address and instruction register
+PC: dff_register port map(clk => clk, rst => rst, wr => c_PC, i => pcin, o => pcout);
+IR: dff_register port map(clk => clk, rst => rst, wr => c_IR, i => mem_dataout, o => instr);
+
+-- CZ flag registers
+C: DFlipFlop port map(clk => clk, rst => rst, wr => c_C, i => aluout_c, o => Cout);
+Z: DFlipFlop port map(clk => clk, rst => rst, wr => c_Z, i => aluout_z, o => Zout);
 
 -- main components
-RF: RegisterFile port map(clk => clk, 
-									rst => rst, 
-									wr => rf_wr, 
+RF: RegisterFile port map( clk => clk, rst => rst, 
+									wr => c_rf, 
 									A1 => instr(11 downto 9), 
 									A2 => m2out, 
 									A3 => m7out, 
 									Din => m9out, 
-									Dout1 => d2in, 
-									Dout2 => d3in); 
+									Dout1 => rfd1, 
+									Dout2 => rfd2); 
 
-alu_main: ALU port map(X => m4out,
+alu_main: ALU port map( X => m4out,
 								Y => m5out,
-								op => alu_op,
-								C_out => alu_c,
-								Z_out => alu_z,
-								Z => d4in);
+								op => c_alu,
+								C_out => aluout_c,
+								Z_out => aluout_z,
+								Z => aluout);
 
-se7: sext_9bit port map(X => instr(8 downto 0),
-								s_type => c_sext9,
-								Y => se7out);
+se7: sext_9bit port map( X => instr(8 downto 0),
+								 s_type => c_sext9,
+								 Y => se7out);
 
-se10: sext_6bit port map(X => instr(5 downto 0),
-									Y => se10out);
+se10: sext_6bit port map( X => instr(5 downto 0),
+								  Y => se10out);
 
-									
-ffr: ff_register port map(clk=>clk, rst => reset_treg, d=> t_reg2, s=> t_regc);
+
 --Muxes
-m1: Mux16_4_1 port map(A => pc,
-								B => t4, 
-								C => t1, 
-								D => Z16,
-								S1 => c_m1(1),
-								S0 => c_m1(0),
+
+-- M1. selecting the address for the memory
+m1: Mux16_2_1 port map( A => pcout, B => aluout,
+								S0 => c_m1,
 								y => mem_addr);
 								
-m2: Mux3_2_1 port map(A => instr(8 downto 6),
-								B => t_regc(2 downto 0), 
-								S0 => c_m2,
-								y => m2out);
-								
-m3: Mux16_2_1 port map(A => t1,
-								B => t2, 
-								S0 => c_m3,
-								y => m3out);
+-- M2. for selecting the second address to the register file								
+m2: Mux3_2_1 port map( A => instr(8 downto 6), B => t2out(2 downto 0), 
+							  S0 => c_m2, y => m2out);
 
-m4: Mux16_4_1 port map(A => t1,
-								B => t2, 
-								C => pc, 
-								D => t_regc,
+--						  
+m3: Mux16_2_1 port map( A => t1out, B => rfd2, 
+								S0 => c_m3,
+								y => mem_datain);
+
+-- M4. for selecting input1 to the ALU
+m4: Mux16_4_1 port map(A => t1out,
+								B => t2out, 
+								C => pcout, 
+								D => Z16,
 								S1 => c_m4(1),
 								S0 => c_m4(0),
 								y => m4out);
-								
-m5: Mux16_4_1 port map(A => t2,
-								B => t3, 
+
+-- M5. for selecting input2 to the ALU								
+m5: Mux16_4_1 port map(A => t2out,
+								B => t3out, 
 								C => O16, 
 								D => Z16,
 								S1 => c_m5(1),
 								S0 => c_m5(0),
 								y => m5out);
 
--- for sign extended input to be stored in t3 depending on control c_m6								
+-- M6. for sign extended input to be stored in T3 depending on control c_m6								
 m6: Mux16_2_1 port map(A => se7out,
 								B => se10out,
 								S0 => c_m6,
-								y => t3);
+								y => m6out);
 								
 
+-- M7. assigning the datain address for the register file
+m7: Mux3_4_1 port map( A => instr(11 downto 9),
+							  B => instr(8 downto 6), 
+							  C => instr(5 downto 3), 
+							  D => t2out(2 downto 0), 
+							  S1 => c_m7(1), 
+						     S0 => c_m7(0), 
+							  y => m7out);
 
-m7: Mux3_4_1 port map(A => instr(11 downto 9),
-								B => instr(8 downto 6), 
-								C => instr(5 downto 3), 
-								D => t_regc(2 downto 0), 
-								S1 => c_m7(1), 
-								S0 => c_m7(0), 
-								y => m7out);
-
--- assigning PC with the new value
-m8: Mux16_2_1 port map(A => t4,
-								B => t2,
+-- M8. assigning PC with the new value
+m8: Mux16_2_1 port map(A => aluout,
+								B => t2out,
 								S0 => c_m8,
-								y => pc);
+								y => pcin);
 
-
-m9: Mux16_4_1 port map(A => t3,
-								B => t4, 
-								C => t5, 
-								D => pc,
+-- M9. for selecting the datain for the register file
+m9: Mux16_4_1 port map(A => t2out,
+								B => t3out, 
+								C => mem_dataout, 
+								D => pcout,
 								S1 => c_m9(1),
 								S0 => c_m9(0),
 								y => m9out);
 
---Demuxes
-d1: DeMux16_1_4 port map(A => mem_dataout,
-									S1 => c_d1(1),
-									S0 => c_d1(1),
-									O0 => instr,
-									O1 => t5,
-									O2 => gbg16,
-									O3 => gbg16);
-									
-
-d2: DeMux16_1_4 port map(A => d2in, 
-									S1 => c_d2(1),
-									S0 => c_d2(0),
-									O0 => t1,
-									O1 => gbg16,
-									O2 => gbg16,
-									O3 => gbg16);
-									
-d3: DeMux16_1_4 port map(A => d3in,
-									S1 => c_d3(1),
-									S0 => c_d3(0),
-									O0 => t2,
-									O1 => gbg16,
-									O2 => gbg16,
-									O3 => gbg16);
-									
-
-d4: DeMux16_1_4 port map(A => d4in,
-									S1 => c_d4(1),
-									S0 => c_d4(0),
-									O0 => t4,
-									O1 => t_reg2,
-									O2 => gbg16,
-									O3 => gbg16);
-
--- modifying the C flag
-d5: DeMux1_1_2 port map(A => alu_c, 
-								S => c_assign,
-								O0 => gbg1,
-								O1 => C);
+-- M10, M11, M12 muxes to assign values to T1, T2, T3 for the next clock cycle
+m10: Mux16_2_1 port map( A => aluout, B => rfd1,
+								 S0 => c_m10,
+								 y => m10out);
+								 
+m11: Mux16_4_1 port map( A => aluout, B => rfd2,
+								 C => mem_dataout, D => Z16,
+								 S0 => c_m11(0),
+								 S1 => c_m11(1),
+								 y => m11out);
+								 
+m12: Mux16_2_1 port map( A => aluout, B => m6out,
+								 S0 => c_m12,
+								 y => m12out);
 								
--- modifying the Z flag
-d6: DeMux1_1_2 port map(A => alu_z, 
-								S => z_assign,
-								O0 => gbg1, -- garbage
-								O1 => Z);
-
-			
---have to set default value, after setting the reset becomes 1			
---process(rst, clk)
---begin
---		if(rst = '1') then
---			pc <= Z16;
---		end if;
---end process;
-
-t_reg <= t_regc;
-ra <= t1;
-rb <= t2;
-mem_datain <= m3out;
-C_val <= C;
-Z_val <= Z;
 instruction <= instr;
-								
+T1 <= t1out;
+T2 <= t2out;
+T3 <= t2out;
+
 end struc; 
 

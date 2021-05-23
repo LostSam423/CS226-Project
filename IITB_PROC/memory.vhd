@@ -6,7 +6,7 @@ library ieee;
 use ieee.numeric_std.all;
 
 entity Memory is 
-	port (clk,wr,rd: in std_logic; 
+	port (clk, wr: in std_logic; 
 			Addr_in, D_in: in std_logic_vector(15 downto 0);
 			D_out: out std_logic_vector(15 downto 0)); 
 end entity; 
@@ -17,14 +17,14 @@ architecture behave of Memory is
 	8 => x"233a", 9 => x"2079", 10 => x"4f86",11 => x"4f9f", 12 => x"c9c2", 13 => x"abcd", 14 => x"8e02", 15 => x"1234", 16 => x"7caa", 17 => x"91c0",
 	128 => x"ffff", 129 => x"0002", 130 => x"0000", 131 => x"0000", 132 => x"0001", 133 => x"0000",
 	others => x"0000");
-	begin 
-	  process(clk, mem_reg, rd, Addr_in, wr)
+	
+	
+	begin
+	
+	  D_out <= mem_reg(to_integer(unsigned(Addr_in)));
+	  
+	  process(clk, mem_reg, Addr_in, wr)
 	   begin
-		if (rd = '1') then
-			 D_out <= mem_reg(to_integer(unsigned(Addr_in)));
-		elsif (rd = '0') then
-		  	 D_out <= "1111111111111111";
-		end if;
 
 		if (wr = '1') then
 		  if(falling_edge(clk)) then
