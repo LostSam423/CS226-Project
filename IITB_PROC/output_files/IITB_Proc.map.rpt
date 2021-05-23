@@ -1,0 +1,838 @@
+Analysis & Synthesis report for IITB_Proc
+Sun May 23 11:36:59 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |IITB_Proc|FSM:FSM_main|state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Port Connectivity Checks: "Datapath:datapath_main|Mux16_4_1:m11"
+ 13. Port Connectivity Checks: "Datapath:datapath_main|Mux16_4_1:m5"
+ 14. Port Connectivity Checks: "Datapath:datapath_main|Mux16_4_1:m4"
+ 15. Port Connectivity Checks: "Datapath:datapath_main|sext_9bit:se7|Mux16_2_1:mux"
+ 16. Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|Mux1_2_1:mux2"
+ 17. Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Mux1_2_1:tbo0"
+ 18. Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0|Mux1_2_1:mux4"
+ 19. Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0|Mux1_2_1:mux3"
+ 20. Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0|Mux1_2_1:mux1"
+ 21. Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sun May 23 11:36:59 2021       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; IITB_Proc                                   ;
+; Top-level Entity Name           ; IITB_Proc                                   ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 731                                         ;
+; Total pins                      ; 18                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; IITB_Proc          ; IITB_Proc          ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                      ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                               ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
+; IITB_Proc.vhd                    ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd    ;         ;
+; testbench.vhd                    ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd    ;         ;
+; sext_9bit.vhd                    ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd    ;         ;
+; sext_6bit.vhd                    ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd    ;         ;
+; RegisterFile.vhd                 ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd ;         ;
+; nand.vhd                         ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd         ;         ;
+; Mux3_4_1.vhdl                    ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl    ;         ;
+; Mux3_2_1.vhdl                    ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_2_1.vhdl    ;         ;
+; Mux1_4_1.vhdl                    ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_4_1.vhdl    ;         ;
+; Mux1_2_1.vhdl                    ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_2_1.vhdl    ;         ;
+; Mux16_4_1.vhdl                   ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_4_1.vhdl   ;         ;
+; Mux16_2_1.vhdl                   ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_2_1.vhdl   ;         ;
+; memory.vhd                       ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/memory.vhd       ;         ;
+; Half-Adder.vhd                   ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Half-Adder.vhd   ;         ;
+; Full-Adder.vhd                   ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Full-Adder.vhd   ;         ;
+; FSM.vhd                          ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/FSM.vhd          ;         ;
+; ff_register.vhd                  ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd  ;         ;
+; DFlipFlop.vhd                    ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/DFlipFlop.vhd    ;         ;
+; Datapath.vhd                     ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd     ;         ;
+; ALU.vhd                          ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ALU.vhd          ;         ;
+; adder_16bit.vhd                  ; yes             ; User VHDL File  ; D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/adder_16bit.vhd  ;         ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 614       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 565       ;
+;     -- 7 input functions                    ; 156       ;
+;     -- 6 input functions                    ; 166       ;
+;     -- 5 input functions                    ; 63        ;
+;     -- 4 input functions                    ; 60        ;
+;     -- <=3 input functions                  ; 120       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 731       ;
+;                                             ;           ;
+; I/O pins                                    ; 18        ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 731       ;
+; Total fan-out                               ; 5354      ;
+; Average fan-out                             ; 4.02      ;
++---------------------------------------------+-----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                       ;
++------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------+--------------+--------------+
+; Compilation Hierarchy Node         ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                           ; Entity Name  ; Library Name ;
++------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------+--------------+--------------+
+; |IITB_Proc                         ; 565 (0)             ; 731 (0)                   ; 0                 ; 0          ; 18   ; 0            ; |IITB_Proc                                                                                                    ; IITB_Proc    ; work         ;
+;    |Datapath:datapath_main|        ; 290 (0)             ; 210 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main                                                                             ; Datapath     ; work         ;
+;       |ALU:alu_main|               ; 53 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main                                                                ; ALU          ; work         ;
+;          |Mux16_2_1:mux1|          ; 20 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1                                                 ; Mux16_2_1    ; work         ;
+;             |Mux1_2_1:\muxg:0:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:0:mx                             ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:10:mx| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:10:mx                            ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:11:mx| ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:11:mx                            ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:12:mx| ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:12:mx                            ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:13:mx| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:13:mx                            ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:14:mx| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:14:mx                            ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:15:mx| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:15:mx                            ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:1:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:1:mx                             ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:2:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:2:mx                             ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:3:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:3:mx                             ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:4:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:4:mx                             ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:5:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:5:mx                             ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:6:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:6:mx                             ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:7:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:7:mx                             ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:8:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:8:mx                             ; Mux1_2_1     ; work         ;
+;             |Mux1_2_1:\muxg:9:mx|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1|Mux1_2_1:\muxg:9:mx                             ; Mux1_2_1     ; work         ;
+;          |adder_16bit:p_1|         ; 33 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1                                                ; adder_16bit  ; work         ;
+;             |Full_Adder:fa0|       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0                                 ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa10|      ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa10                                ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa10|Half_Adder:onha0               ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa10|Half_Adder:onha0|Mux1_2_1:mux5 ; Mux1_2_1     ; work         ;
+;                |Half_Adder:onha1|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa10|Half_Adder:onha1               ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa10|Half_Adder:onha1|Mux1_2_1:mux5 ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa11|      ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa11                                ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa11|Half_Adder:onha0               ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa11|Half_Adder:onha0|Mux1_2_1:mux5 ; Mux1_2_1     ; work         ;
+;                |Half_Adder:onha1|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa11|Half_Adder:onha1               ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa11|Half_Adder:onha1|Mux1_2_1:mux5 ; Mux1_2_1     ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa11|Mux1_2_1:tbo0                  ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa12|      ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa12                                ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa12|Half_Adder:onha0               ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa12|Half_Adder:onha0|Mux1_2_1:mux5 ; Mux1_2_1     ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa12|Mux1_2_1:tbo0                  ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa13|      ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa13                                ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa13|Half_Adder:onha0               ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa13|Half_Adder:onha0|Mux1_2_1:mux5 ; Mux1_2_1     ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa13|Mux1_2_1:tbo0                  ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa14|      ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa14                                ; Full_Adder   ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa14|Mux1_2_1:tbo0                  ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa15|      ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa15                                ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa15|Half_Adder:onha0               ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa15|Half_Adder:onha0|Mux1_2_1:mux5 ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa1|       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa1                                 ; Full_Adder   ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa1|Mux1_2_1:tbo0                   ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa2|       ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa2                                 ; Full_Adder   ; work         ;
+;                |Half_Adder:onha1|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa2|Half_Adder:onha1                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa2|Half_Adder:onha1|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa2|Mux1_2_1:tbo0                   ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa3|       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa3                                 ; Full_Adder   ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa3|Mux1_2_1:tbo0                   ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa4|       ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa4                                 ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa4|Half_Adder:onha0                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa4|Half_Adder:onha0|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;                |Half_Adder:onha1|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa4|Half_Adder:onha1                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa4|Half_Adder:onha1|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa5|       ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa5                                 ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa5|Half_Adder:onha0                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa5|Half_Adder:onha0|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;                |Half_Adder:onha1|  ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa5|Half_Adder:onha1                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa5|Half_Adder:onha1|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa5|Mux1_2_1:tbo0                   ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa6|       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa6                                 ; Full_Adder   ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa6|Mux1_2_1:tbo0                   ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa7|       ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa7                                 ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa7|Half_Adder:onha0                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa7|Half_Adder:onha0|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa7|Mux1_2_1:tbo0                   ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa8|       ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa8                                 ; Full_Adder   ; work         ;
+;                |Half_Adder:onha1|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa8|Half_Adder:onha1                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa8|Half_Adder:onha1|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;                |Mux1_2_1:tbo0|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa8|Mux1_2_1:tbo0                   ; Mux1_2_1     ; work         ;
+;             |Full_Adder:fa9|       ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa9                                 ; Full_Adder   ; work         ;
+;                |Half_Adder:onha0|  ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa9|Half_Adder:onha0                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa9|Half_Adder:onha0|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;                |Half_Adder:onha1|  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa9|Half_Adder:onha1                ; Half_Adder   ; work         ;
+;                   |Mux1_2_1:mux5|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa9|Half_Adder:onha1|Mux1_2_1:mux5  ; Mux1_2_1     ; work         ;
+;       |DFlipFlop:C|                ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|DFlipFlop:C                                                                 ; DFlipFlop    ; work         ;
+;       |DFlipFlop:Z|                ; 17 (17)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|DFlipFlop:Z                                                                 ; DFlipFlop    ; work         ;
+;       |Mux16_2_1:m1|               ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m1                                                                ; Mux16_2_1    ; work         ;
+;          |Mux1_2_1:\muxg:0:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m1|Mux1_2_1:\muxg:0:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:1:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m1|Mux1_2_1:\muxg:1:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:2:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m1|Mux1_2_1:\muxg:2:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:3:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m1|Mux1_2_1:\muxg:3:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:4:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m1|Mux1_2_1:\muxg:4:mx                                            ; Mux1_2_1     ; work         ;
+;       |Mux16_2_1:m3|               ; 16 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3                                                                ; Mux16_2_1    ; work         ;
+;          |Mux1_2_1:\muxg:0:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:0:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:10:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:10:mx                                           ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:11:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:11:mx                                           ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:12:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:12:mx                                           ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:13:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:13:mx                                           ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:14:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:14:mx                                           ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:15:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:15:mx                                           ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:1:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:1:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:2:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:2:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:3:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:3:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:4:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:4:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:5:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:5:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:6:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:6:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:7:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:7:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:8:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:8:mx                                            ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:9:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_2_1:m3|Mux1_2_1:\muxg:9:mx                                            ; Mux1_2_1     ; work         ;
+;       |Mux16_4_1:m11|              ; 19 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11                                                               ; Mux16_4_1    ; work         ;
+;          |Mux1_4_1:\muxg4:0:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:0:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:10:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:10:mx                                         ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:11:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:11:mx                                         ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:12:mx|   ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:12:mx                                         ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:13:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:13:mx                                         ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:14:mx|   ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:14:mx                                         ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:15:mx|   ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:15:mx                                         ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:1:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:1:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:2:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:2:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:3:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:3:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:4:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:4:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:5:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:5:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:6:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:6:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:7:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:7:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:8:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:8:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:9:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m11|Mux1_4_1:\muxg4:9:mx                                          ; Mux1_4_1     ; work         ;
+;       |Mux16_4_1:m4|               ; 18 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4                                                                ; Mux16_4_1    ; work         ;
+;          |Mux1_4_1:\muxg4:0:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:0:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:10:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:10:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:11:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:11:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:12:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:12:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:13:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:13:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:14:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:14:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:15:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:15:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:1:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:1:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:2:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:2:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:3:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:3:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:4:mx|    ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:4:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:5:mx|    ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:5:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:6:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:6:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:7:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:7:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:8:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:8:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:9:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:9:mx                                           ; Mux1_4_1     ; work         ;
+;       |Mux16_4_1:m5|               ; 21 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5                                                                ; Mux16_4_1    ; work         ;
+;          |Mux1_4_1:\muxg4:0:mx|    ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:0:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:10:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:10:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:11:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:11:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:12:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:12:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:13:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:13:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:14:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:14:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:15:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:15:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:1:mx|    ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:1:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:2:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:2:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:3:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:3:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:4:mx|    ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:4:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:5:mx|    ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:5:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:6:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:6:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:7:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:7:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:8:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:8:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:9:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m5|Mux1_4_1:\muxg4:9:mx                                           ; Mux1_4_1     ; work         ;
+;       |Mux16_4_1:m9|               ; 16 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9                                                                ; Mux16_4_1    ; work         ;
+;          |Mux1_4_1:\muxg4:0:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:0:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:10:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:10:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:11:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:11:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:12:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:12:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:13:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:13:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:14:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:14:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:15:mx|   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:15:mx                                          ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:1:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:1:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:2:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:2:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:3:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:3:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:4:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:4:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:5:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:5:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:6:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:6:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:7:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:7:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:8:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:8:mx                                           ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg4:9:mx|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux16_4_1:m9|Mux1_4_1:\muxg4:9:mx                                           ; Mux1_4_1     ; work         ;
+;       |Mux3_2_1:m2|                ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux3_2_1:m2                                                                 ; Mux3_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:0:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux3_2_1:m2|Mux1_2_1:\muxg:0:mx                                             ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:1:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux3_2_1:m2|Mux1_2_1:\muxg:1:mx                                             ; Mux1_2_1     ; work         ;
+;          |Mux1_2_1:\muxg:2:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux3_2_1:m2|Mux1_2_1:\muxg:2:mx                                             ; Mux1_2_1     ; work         ;
+;       |Mux3_4_1:m7|                ; 4 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux3_4_1:m7                                                                 ; Mux3_4_1     ; work         ;
+;          |Mux1_4_1:\muxg:0:mx|     ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux3_4_1:m7|Mux1_4_1:\muxg:0:mx                                             ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg:1:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux3_4_1:m7|Mux1_4_1:\muxg:1:mx                                             ; Mux1_4_1     ; work         ;
+;          |Mux1_4_1:\muxg:2:mx|     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|Mux3_4_1:m7|Mux1_4_1:\muxg:2:mx                                             ; Mux1_4_1     ; work         ;
+;       |RegisterFile:RF|            ; 43 (43)             ; 128 (128)                 ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF                                                             ; RegisterFile ; work         ;
+;       |dff_register:IR|            ; 1 (0)               ; 16 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR                                                             ; dff_register ; work         ;
+;          |DFlipFlop:\ff16:0:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:0:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:10:ff|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:10:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:11:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:11:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:12:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:12:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:13:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:13:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:14:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:14:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:15:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:15:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:1:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:1:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:2:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:2:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:3:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:3:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:4:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:4:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:5:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:5:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:6:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:6:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:7:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:7:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:8:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:8:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:9:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:9:ff                                        ; DFlipFlop    ; work         ;
+;       |dff_register:PC|            ; 1 (0)               ; 16 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC                                                             ; dff_register ; work         ;
+;          |DFlipFlop:\ff16:0:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:0:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:10:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:10:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:11:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:11:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:12:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:12:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:13:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:13:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:14:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:14:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:15:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:15:ff                                       ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:1:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:1:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:2:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:2:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:3:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:3:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:4:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:4:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:5:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:5:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:6:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:6:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:7:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:7:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:8:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:8:ff                                        ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:9:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:9:ff                                        ; DFlipFlop    ; work         ;
+;       |dff_register:temp1|         ; 49 (0)              ; 16 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1                                                          ; dff_register ; work         ;
+;          |DFlipFlop:\ff16:0:ff|    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:0:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:10:ff|   ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:10:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:11:ff|   ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:11:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:12:ff|   ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:12:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:13:ff|   ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:13:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:14:ff|   ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:14:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:15:ff|   ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:15:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:1:ff|    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:1:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:2:ff|    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:2:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:3:ff|    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:3:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:4:ff|    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:4:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:5:ff|    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:5:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:6:ff|    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:6:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:7:ff|    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:7:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:8:ff|    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:8:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:9:ff|    ; 4 (4)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:9:ff                                     ; DFlipFlop    ; work         ;
+;       |dff_register:temp2|         ; 1 (0)               ; 16 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2                                                          ; dff_register ; work         ;
+;          |DFlipFlop:\ff16:0:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:0:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:10:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:10:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:11:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:11:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:12:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:12:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:13:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:13:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:14:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:14:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:15:ff|   ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:15:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:1:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:1:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:2:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:2:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:3:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:3:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:4:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:4:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:5:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:5:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:6:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:6:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:7:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:7:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:8:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:8:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:9:ff|    ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:9:ff                                     ; DFlipFlop    ; work         ;
+;       |dff_register:temp3|         ; 20 (0)              ; 16 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3                                                          ; dff_register ; work         ;
+;          |DFlipFlop:\ff16:0:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:0:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:10:ff|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:10:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:11:ff|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:11:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:12:ff|   ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:12:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:13:ff|   ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:13:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:14:ff|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:14:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:15:ff|   ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:15:ff                                    ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:1:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:1:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:2:ff|    ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:2:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:3:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:3:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:4:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:4:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:5:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:5:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:6:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:6:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:7:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:7:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:8:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:8:ff                                     ; DFlipFlop    ; work         ;
+;          |DFlipFlop:\ff16:9:ff|    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:9:ff                                     ; DFlipFlop    ; work         ;
+;    |FSM:FSM_main|                  ; 48 (48)             ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|FSM:FSM_main                                                                                       ; FSM          ; work         ;
+;    |Memory:memory_main|            ; 227 (227)           ; 512 (512)                 ; 0                 ; 0          ; 0    ; 0            ; |IITB_Proc|Memory:memory_main                                                                                 ; Memory       ; work         ;
++------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |IITB_Proc|FSM:FSM_main|state                                                                                                                           ;
++-----------+-----------+-----------+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+
+; Name      ; state.S13 ; state.S12 ; state.S11 ; state.S10 ; state.S9 ; state.S8 ; state.S7 ; state.S6 ; state.S5 ; state.S4 ; state.S3 ; state.S2 ; state.S1 ; state.S0 ;
++-----------+-----------+-----------+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+
+; state.S0  ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ;
+; state.S1  ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 1        ;
+; state.S2  ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 1        ;
+; state.S3  ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 1        ;
+; state.S4  ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 1        ;
+; state.S5  ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.S6  ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.S7  ; 0         ; 0         ; 0         ; 0         ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.S8  ; 0         ; 0         ; 0         ; 0         ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.S9  ; 0         ; 0         ; 0         ; 0         ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.S10 ; 0         ; 0         ; 0         ; 1         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.S11 ; 0         ; 0         ; 1         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.S12 ; 0         ; 1         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
+; state.S13 ; 1         ; 0         ; 0         ; 0         ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ;
++-----------+-----------+-----------+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+
+
+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; FSM:FSM_main|state.S3                 ; Lost fanout        ;
+; FSM:FSM_main|state.S7                 ; Lost fanout        ;
+; FSM:FSM_main|state.S11                ; Lost fanout        ;
+; FSM:FSM_main|state.S12                ; Lost fanout        ;
+; FSM:FSM_main|state.S13                ; Lost fanout        ;
+; Total Number of Removed Registers = 5 ;                    ;
++---------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 731   ;
+; Number of registers using Synchronous Clear  ; 215   ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 719   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|dff_register:IR|DFlipFlop:\ff16:10:ff|o   ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|dff_register:temp2|DFlipFlop:\ff16:6:ff|o ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF|registers[0][3]           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF|registers[1][1]           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF|registers[2][15]          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF|registers[3][1]           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF|registers[4][11]          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF|registers[5][4]           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF|registers[6][7]           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF|registers[7][11]          ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|dff_register:PC|DFlipFlop:\ff16:9:ff|o    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:2:ff|o ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; Yes        ; |IITB_Proc|Datapath:datapath_main|dff_register:temp3|DFlipFlop:\ff16:7:ff|o ;
+; 10:1               ; 16 bits   ; 96 LEs        ; 80 LEs               ; 16 LEs                 ; Yes        ; |IITB_Proc|Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:9:ff|o ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |IITB_Proc|Datapath:datapath_main|RegisterFile:RF|Mux25                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|Mux16_4_1:m11" ;
++------+-------+----------+----------------------------------------+
+; Port ; Type  ; Severity ; Details                                ;
++------+-------+----------+----------------------------------------+
+; d    ; Input ; Info     ; Stuck at GND                           ;
++------+-------+----------+----------------------------------------+
+
+
++-----------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|Mux16_4_1:m5" ;
++----------+-------+----------+-----------------------------------+
+; Port     ; Type  ; Severity ; Details                           ;
++----------+-------+----------+-----------------------------------+
+; c[15..1] ; Input ; Info     ; Stuck at GND                      ;
+; c[0]     ; Input ; Info     ; Stuck at VCC                      ;
+; d        ; Input ; Info     ; Stuck at GND                      ;
++----------+-------+----------+-----------------------------------+
+
+
++-----------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|Mux16_4_1:m4" ;
++------+-------+----------+---------------------------------------+
+; Port ; Type  ; Severity ; Details                               ;
++------+-------+----------+---------------------------------------+
+; d    ; Input ; Info     ; Stuck at GND                          ;
++------+-------+----------+---------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|sext_9bit:se7|Mux16_2_1:mux" ;
++---------+-------+----------+---------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                           ;
++---------+-------+----------+---------------------------------------------------+
+; a[6..0] ; Input ; Info     ; Stuck at GND                                      ;
++---------+-------+----------+---------------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|Mux1_2_1:mux2" ;
++------+-------+----------+-----------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                             ;
++------+-------+----------+-----------------------------------------------------+
+; b    ; Input ; Info     ; Stuck at GND                                        ;
++------+-------+----------+-----------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Mux1_2_1:tbo0" ;
++------+-------+----------+------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                            ;
++------+-------+----------+------------------------------------------------------------------------------------+
+; b    ; Input ; Info     ; Stuck at VCC                                                                       ;
++------+-------+----------+------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0|Mux1_2_1:mux4" ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                             ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------+
+; a    ; Input ; Info     ; Stuck at VCC                                                                                        ;
+; b    ; Input ; Info     ; Stuck at GND                                                                                        ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0|Mux1_2_1:mux3" ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                             ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------+
+; a    ; Input ; Info     ; Stuck at GND                                                                                        ;
+; b    ; Input ; Info     ; Stuck at VCC                                                                                        ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0|Mux1_2_1:mux1" ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                             ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------+
+; a    ; Input ; Info     ; Stuck at GND                                                                                        ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1" ;
++--------+-------+----------+-----------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                             ;
++--------+-------+----------+-----------------------------------------------------+
+; car_in ; Input ; Info     ; Stuck at GND                                        ;
++--------+-------+----------+-----------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 731                         ;
+;     ENA               ; 512                         ;
+;     ENA SCLR          ; 191                         ;
+;     ENA SCLR SLD      ; 16                          ;
+;     SCLR              ; 8                           ;
+;     plain             ; 4                           ;
+; arriav_lcell_comb     ; 565                         ;
+;     extend            ; 156                         ;
+;         7 data inputs ; 156                         ;
+;     normal            ; 409                         ;
+;         1 data inputs ; 46                          ;
+;         2 data inputs ; 19                          ;
+;         3 data inputs ; 55                          ;
+;         4 data inputs ; 60                          ;
+;         5 data inputs ; 63                          ;
+;         6 data inputs ; 166                         ;
+; boundary_port         ; 18                          ;
+;                       ;                             ;
+; Max LUT depth         ; 11.00                       ;
+; Average LUT depth     ; 5.24                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Sun May 23 11:36:38 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off IITB_Proc -c IITB_Proc
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file iitb_proc.vhd
+    Info (12022): Found design unit 1: IITB_Proc-behave File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd Line: 15
+    Info (12023): Found entity 1: IITB_Proc File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file testbench.vhd
+    Info (12022): Found design unit 1: testbench-tb File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd Line: 10
+    Info (12023): Found entity 1: testbench File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file sext_9bit.vhd
+    Info (12022): Found design unit 1: sext_9bit-Easy File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd Line: 13
+    Info (12023): Found entity 1: sext_9bit File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file sext_6bit.vhd
+    Info (12022): Found design unit 1: sext_6bit-Easy File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd Line: 12
+    Info (12023): Found entity 1: sext_6bit File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file registerfile.vhd
+    Info (12022): Found design unit 1: RegisterFile-behave File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd Line: 17
+    Info (12023): Found entity 1: RegisterFile File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file nand.vhd
+    Info (12022): Found design unit 1: nand_op-comp_nand File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd Line: 11
+    Info (12023): Found entity 1: nand_op File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux3_4_1.vhdl
+    Info (12022): Found design unit 1: Mux3_4_1-behave File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl Line: 15
+    Info (12023): Found entity 1: Mux3_4_1 File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file mux3_2_1.vhdl
+    Info (12022): Found design unit 1: Mux3_2_1-behave File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_2_1.vhdl Line: 15
+    Info (12023): Found entity 1: Mux3_2_1 File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_2_1.vhdl Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file mux1_4_1.vhdl
+    Info (12022): Found design unit 1: Mux1_4_1-struct File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_4_1.vhdl Line: 11
+    Info (12023): Found entity 1: Mux1_4_1 File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_4_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux1_2_1.vhdl
+    Info (12022): Found design unit 1: Mux1_2_1-struct File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_2_1.vhdl Line: 11
+    Info (12023): Found entity 1: Mux1_2_1 File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_2_1.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux16_4_1.vhdl
+    Info (12022): Found design unit 1: Mux16_4_1-behave File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_4_1.vhdl Line: 15
+    Info (12023): Found entity 1: Mux16_4_1 File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_4_1.vhdl Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file mux16_2_1.vhdl
+    Info (12022): Found design unit 1: Mux16_2_1-behave File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_2_1.vhdl Line: 15
+    Info (12023): Found entity 1: Mux16_2_1 File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_2_1.vhdl Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
+    Info (12022): Found design unit 1: Memory-behave File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/memory.vhd Line: 14
+    Info (12023): Found entity 1: Memory File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/memory.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file half-adder.vhd
+    Info (12022): Found design unit 1: Half_Adder-arch File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Half-Adder.vhd Line: 12
+    Info (12023): Found entity 1: Half_Adder File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Half-Adder.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file full-adder.vhd
+    Info (12022): Found design unit 1: Full_Adder-arch File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Full-Adder.vhd Line: 14
+    Info (12023): Found entity 1: Full_Adder File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Full-Adder.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file fsm.vhd
+    Info (12022): Found design unit 1: FSM-struc File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/FSM.vhd Line: 26
+    Info (12023): Found entity 1: FSM File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/FSM.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file ff_register.vhd
+    Info (12022): Found design unit 1: dff_register-struc File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd Line: 12
+    Info (12023): Found entity 1: dff_register File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file dflipflop.vhd
+    Info (12022): Found design unit 1: DFlipFlop-behave File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/DFlipFlop.vhd Line: 8
+    Info (12023): Found entity 1: DFlipFlop File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/DFlipFlop.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file datapath.vhd
+    Info (12022): Found design unit 1: Datapath-struc File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 33
+    Info (12023): Found entity 1: Datapath File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: ALU-behave File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ALU.vhd Line: 14
+    Info (12023): Found entity 1: ALU File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ALU.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file adder_16bit.vhd
+    Info (12022): Found design unit 1: adder_16bit-Struct File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/adder_16bit.vhd Line: 10
+    Info (12023): Found entity 1: adder_16bit File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/adder_16bit.vhd Line: 6
+Info (12127): Elaborating entity "IITB_Proc" for the top level hierarchy
+Info (12128): Elaborating entity "Datapath" for hierarchy "Datapath:datapath_main" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd Line: 82
+Info (12128): Elaborating entity "dff_register" for hierarchy "Datapath:datapath_main|dff_register:temp1" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 140
+Info (12128): Elaborating entity "DFlipFlop" for hierarchy "Datapath:datapath_main|dff_register:temp1|DFlipFlop:\ff16:15:ff" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd Line: 23
+Info (12128): Elaborating entity "RegisterFile" for hierarchy "Datapath:datapath_main|RegisterFile:RF" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 153
+Info (12128): Elaborating entity "ALU" for hierarchy "Datapath:datapath_main|ALU:alu_main" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 162
+Info (12128): Elaborating entity "adder_16bit" for hierarchy "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ALU.vhd Line: 43
+Info (12128): Elaborating entity "Full_Adder" for hierarchy "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/adder_16bit.vhd Line: 20
+Info (12128): Elaborating entity "Half_Adder" for hierarchy "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Full-Adder.vhd Line: 35
+Info (12128): Elaborating entity "Mux1_2_1" for hierarchy "Datapath:datapath_main|ALU:alu_main|adder_16bit:p_1|Full_Adder:fa0|Half_Adder:onha0|Mux1_2_1:mux1" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Half-Adder.vhd Line: 24
+Info (12128): Elaborating entity "nand_op" for hierarchy "Datapath:datapath_main|ALU:alu_main|nand_op:p_2" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ALU.vhd Line: 44
+Info (12128): Elaborating entity "Mux16_2_1" for hierarchy "Datapath:datapath_main|ALU:alu_main|Mux16_2_1:mux1" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ALU.vhd Line: 45
+Info (12128): Elaborating entity "sext_9bit" for hierarchy "Datapath:datapath_main|sext_9bit:se7" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 169
+Info (12128): Elaborating entity "sext_6bit" for hierarchy "Datapath:datapath_main|sext_6bit:se10" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 173
+Info (12128): Elaborating entity "Mux3_2_1" for hierarchy "Datapath:datapath_main|Mux3_2_1:m2" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 185
+Info (12128): Elaborating entity "Mux16_4_1" for hierarchy "Datapath:datapath_main|Mux16_4_1:m4" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 194
+Info (12128): Elaborating entity "Mux1_4_1" for hierarchy "Datapath:datapath_main|Mux16_4_1:m4|Mux1_4_1:\muxg4:15:mx" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_4_1.vhdl Line: 23
+Info (12128): Elaborating entity "Mux3_4_1" for hierarchy "Datapath:datapath_main|Mux3_4_1:m7" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd Line: 219
+Info (12128): Elaborating entity "FSM" for hierarchy "FSM:FSM_main" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd Line: 102
+Info (12128): Elaborating entity "Memory" for hierarchy "Memory:memory_main" File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd Line: 118
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "Memory:memory_main|mem_reg" is uninferred due to asynchronous read logic File: D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/memory.vhd Line: 20
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 5 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1209 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 1191 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4878 megabytes
+    Info: Processing ended: Sun May 23 11:36:59 2021
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:37
+
+
