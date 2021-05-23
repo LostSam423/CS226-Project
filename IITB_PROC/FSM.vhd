@@ -196,18 +196,6 @@ case state is --  making cases for states
 				vc_m11 := "10";
 				next_state := S6;
 			end if;
---				c_d2 <= "00";  
---		      c_m2 <= '0';
---				if(op_v="0011") then
---					next_state := S4;
---				elsif (op_v="1000") then
---					next_state := S4;
---				elsif(op_v = "0110") then
---					next_state := S5;
---				elsif(op_v = "0111") then
---					c_m2 <= '1'; --!! add to datapath as well - m2 is connected to A2 in reg file, t2 has contents of treg(2 to 0) at 1 , t1 has contents of Ra at 0
---					next_state := S5;
---				end if;
 -----------------------------------
 	when S3 =>
 			vmem_wr := '1';
@@ -231,18 +219,6 @@ case state is --  making cases for states
 					next_state := S9;
 				end if;
 			end if;
---			  if(op_v="0001" or op_v="0100" or op_v="0101") then
---					c_m6 <= '1';
---					next_state := S5;
---			  elsif (op_v="0011") then
---					c_m6 <= '0';
---					c_sext9 <= '1';
---					next_state := S6;
---			  elsif(op_v="1000") then
---					c_m6 <= '0';
---					c_sext9 <= '0';
---					next_state := S6;
---			  end if;
 -----------------------------------
 	when S6 =>
 			 vc_rf := '1';
@@ -265,46 +241,15 @@ case state is --  making cases for states
 					vc_m13 := '1';
 					next_state := S10;
 			 end if;
------------------------------------
---	when S7 => 
---			if(op_v="0100") then
---					vc_m1 := "01";
---					vc_d1 := "01";
---					next_state := S6;
---			if(op_v="0110") then
---					if(unsigned(t_reg) < 8) then
---						c_m1 <= "01";
---						c_d1 <= "01";
---						next_state := S6;
---					else
---						reset_treg <= '1';
---						next_state := S10;
---					end if;
---			end if;
 -------------------------------------
 	when S8 =>
 			vc_rf := '1';
 			vc_m4 := "00";
 			vc_m5 := "00";
 			vc_m1 := '1';
+			vc_m7 := "11";
 			vc_m9 := "10";
 			next_state := S4;
---				if(op_v="0101") then
---					mem_wr <= '1';
---					c_m1 <= "01";
---					c_m3 <= '0'; --data in t1
---					next_state := S10;
---				elsif(op_v="0111") then
---					if(unsigned(t_reg) < 8) then
---						mem_wr <= '1';
---						c_m1 <= "01"; -- a_in = t4 
---						c_m3 <= '1'; --  d_in = t2 ---t2 should be connected to 1 of m3 , do this in datapath 
---						next_state := S9;
---					else
---						reset_treg <= '1';
---						next_state := S10;
---					end if;
---				end if;
 -----------------------------------
 	when S9 =>
 			vc_m2 := '1';
@@ -314,42 +259,28 @@ case state is --  making cases for states
 			vc_m1 := '1';
 			vc_m3 := '1'; 	
 			next_state := S4;
---		 when S9 => -- update t_reg using some flipflop type of thing for LA
---			if(op_v="0110") then
---				alu_op <= '0'; -- added this line
---				c_m4 <= "11";
---				c_m5 <= "10"; --changed from 01 to 10 
---				c_d4 <= "01";
---				next_state:= S5; --changed from S7 to S5
---			elsif(op_v="0111") then
---				alu_op <= '0';
---				c_m4 <= "11"; --treg in
---				c_m5 <= "10"; -- 000000000000..1 in 
---				c_d4 <= "01"; -- treg out 
---				next_state:= S2; 
---			end if;
 -----------------------------------
-		 when S10 =>
-				vc_m4 := "10";
-				vc_PC := '1';
-				if(vop="1100" and T1=T2) then
-					vc_m5 := "01";
-					vc_m8 := '0';
-					next_state:=S0;
-				elsif (vop="1000") then
-					vc_m5 := "01";
-					vc_m8 := '0';
-					next_state := S0;
-				elsif(vop="1001") then
-					vc_m5 := "10";
-					vc_m8 := '1';
-				else	
-					vc_m5 := "10";
-					vc_m8 := '0';
-					next_state := S0;
-				end if;
+	when S10 =>
+			vc_m4 := "10";
+			vc_PC := '1';
+			if(vop="1100" and T1=T2) then
+				vc_m5 := "01";
+				vc_m8 := '0';
+				next_state:=S0;
+			elsif (vop="1000") then
+				vc_m5 := "01";
+				vc_m8 := '0';
+				next_state := S0;
+			elsif(vop="1001") then
+				vc_m5 := "10";
+				vc_m8 := '1';
+			else	
+				vc_m5 := "10";
+				vc_m8 := '0';
+				next_state := S0;
+			end if;
 -----------------------------------
-		 when others =>  null;
+	when others =>  null;
 end case;
 	
 	mem_wr 	<= vmem_wr;

@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Sun May 23 15:04:49 2021
+Analysis & Synthesis Status : Successful - Sun May 23 15:33:39 2021
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : IITB_Proc
 Top-level Entity Name : IITB_Proc
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 1243
+Total registers : 1244
 Total pins : 51
 Total virtual pins : 0
 Total block memory bits : 0
