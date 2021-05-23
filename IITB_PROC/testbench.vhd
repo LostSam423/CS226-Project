@@ -23,17 +23,24 @@ begin
 	--Connecting test bench signals with IITB_PROC.vhd
 	test_instance: IITB_PROC
 		port map (clk => clock, rst => reset, pco => pc);
-
-	
-    clock <= NOT clock AFTER 100 NS;
 	 
 	 process
 	 begin
 	 
 		reset <= '1';
-		wait for 80 ns;
+		clock <= '1';
+		wait for 100 ns;
+		clock <= '0';
+		wait for 100 ns;
+		
 		reset <= '0';
 		
+		while 1=1 loop
+				clock <= '0';
+				wait for 100 ns;
+				clock <= '1';
+				wait for 100 ns;
+		end loop;
 	 end process;
 	 
 end tb;
