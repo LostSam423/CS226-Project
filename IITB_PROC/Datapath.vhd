@@ -22,7 +22,11 @@ entity Datapath is
 		
 		--outs to FSM
 		instruction, T1, T2, T3: out std_logic_vector(15 downto 0);
-		Cout, Zout: out std_logic
+		Cout, Zout: out std_logic;
+		
+		--outs for testing
+		pco: out std_logic_vector(15 downto 0)
+		
 	);
 end entity;
 
@@ -254,6 +258,9 @@ instruction <= instr;
 T1 <= t1out;
 T2 <= t2out;
 T3 <= t2out;
+
+-- testing 
+pco <= pcout;
 
 end struc; 
 

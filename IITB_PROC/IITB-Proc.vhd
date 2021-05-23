@@ -8,7 +8,7 @@ use ieee.numeric_std.all;
 entity IITB_Proc is 
 	port(
 		clk, rst: in std_logic;
-		op: out std_logic_vector(3 downto 0)
+		pco: out std_logic_vector(15 downto 0)
 	);
 end entity;
 
@@ -33,7 +33,10 @@ component Datapath is
 		
 		--outs to FSM
 		instruction, T1, T2, T3: out std_logic_vector(15 downto 0);
-		Cout, Zout: out std_logic
+		Cout, Zout: out std_logic;
+		
+		-- outs for testing
+		pco: out std_logic_vector(15 downto 0)
 	);
 end component;
 
@@ -91,7 +94,10 @@ datapath_main: Datapath port map(clk => clk, rst => rst,
 											instruction => sig_instr,
 											T1 => sig_T1, T2 => sig_T2, T3 => sig_T3,
 											Cout => sig_C,
-											Zout => sig_Z);
+											Zout => sig_Z,
+											----
+											pco => pco
+											);
 											
 FSM_main: FSM port map(		clk => clk, rst => rst,
 
@@ -114,7 +120,5 @@ memory_main: Memory port map(clk => clk,
 											Addr_in => sig_mem_addr,
 											D_in => sig_mem_datain, 
 											D_out => sig_mem_dataout);
-
-op <= "0000";
 
 end behave;
