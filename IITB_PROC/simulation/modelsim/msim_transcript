@@ -12,7 +12,7 @@
 # 
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:38 on May 23,2021
+# Start time: 12:21:24 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/IITB_Proc.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -20,33 +20,33 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity IITB_Proc
 # -- Compiling architecture behave of IITB_Proc
-# End time: 11:37:39 on May 23,2021, Elapsed time: 0:00:01
+# End time: 12:21:24 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:39 on May 23,2021
+# Start time: 12:21:25 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_9bit.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity sext_9bit
 # -- Compiling architecture Easy of sext_9bit
-# End time: 11:37:39 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:25 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:39 on May 23,2021
+# Start time: 12:21:25 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/sext_6bit.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity sext_6bit
 # -- Compiling architecture Easy of sext_6bit
-# End time: 11:37:39 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:25 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:39 on May 23,2021
+# Start time: 12:21:25 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/RegisterFile.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -54,88 +54,88 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity RegisterFile
 # -- Compiling architecture behave of RegisterFile
-# End time: 11:37:40 on May 23,2021, Elapsed time: 0:00:01
+# End time: 12:21:25 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:40 on May 23,2021
+# Start time: 12:21:25 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/nand.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity nand_op
 # -- Compiling architecture comp_nand of nand_op
-# End time: 11:37:40 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:26 on May 23,2021, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:40 on May 23,2021
+# Start time: 12:21:26 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_4_1.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Mux3_4_1
 # -- Compiling architecture behave of Mux3_4_1
-# End time: 11:37:40 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:26 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_2_1.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:40 on May 23,2021
+# Start time: 12:21:26 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux3_2_1.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Mux3_2_1
 # -- Compiling architecture behave of Mux3_2_1
-# End time: 11:37:40 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:26 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_4_1.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:40 on May 23,2021
+# Start time: 12:21:26 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_4_1.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Mux1_4_1
 # -- Compiling architecture struct of Mux1_4_1
-# End time: 11:37:40 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:26 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_2_1.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:40 on May 23,2021
+# Start time: 12:21:26 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux1_2_1.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Mux1_2_1
 # -- Compiling architecture struct of Mux1_2_1
-# End time: 11:37:40 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:26 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_4_1.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:40 on May 23,2021
+# Start time: 12:21:26 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_4_1.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Mux16_4_1
 # -- Compiling architecture behave of Mux16_4_1
-# End time: 11:37:41 on May 23,2021, Elapsed time: 0:00:01
+# End time: 12:21:27 on May 23,2021, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_2_1.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:41 on May 23,2021
+# Start time: 12:21:27 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Mux16_2_1.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Mux16_2_1
 # -- Compiling architecture behave of Mux16_2_1
-# End time: 11:37:41 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:27 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/memory.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:41 on May 23,2021
+# Start time: 12:21:27 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/memory.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -143,11 +143,11 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Memory
 # -- Compiling architecture behave of Memory
-# End time: 11:37:41 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:27 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/FSM.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:41 on May 23,2021
+# Start time: 12:21:27 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/FSM.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -155,33 +155,33 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity FSM
 # -- Compiling architecture struc of FSM
-# End time: 11:37:41 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:27 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:41 on May 23,2021
+# Start time: 12:21:27 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ff_register.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity dff_register
 # -- Compiling architecture struc of dff_register
-# End time: 11:37:42 on May 23,2021, Elapsed time: 0:00:01
+# End time: 12:21:28 on May 23,2021, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/DFlipFlop.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:42 on May 23,2021
+# Start time: 12:21:28 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/DFlipFlop.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity DFlipFlop
 # -- Compiling architecture behave of DFlipFlop
-# End time: 11:37:42 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:28 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:42 on May 23,2021
+# Start time: 12:21:28 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Datapath.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -189,79 +189,79 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Datapath
 # -- Compiling architecture struc of Datapath
-# End time: 11:37:42 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:28 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ALU.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:42 on May 23,2021
+# Start time: 12:21:28 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/ALU.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity ALU
 # -- Compiling architecture behave of ALU
-# End time: 11:37:42 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:28 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/adder_16bit.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:42 on May 23,2021
+# Start time: 12:21:28 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/adder_16bit.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity adder_16bit
 # -- Compiling architecture Struct of adder_16bit
-# End time: 11:37:43 on May 23,2021, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd}
-# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:43 on May 23,2021
-# vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity testbench
-# -- Compiling architecture tb of testbench
-# End time: 11:37:43 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:29 on May 23,2021, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Half-Adder.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:43 on May 23,2021
+# Start time: 12:21:29 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Half-Adder.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Half_Adder
 # -- Compiling architecture arch of Half_Adder
-# End time: 11:37:43 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:29 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Full-Adder.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:43 on May 23,2021
+# Start time: 12:21:29 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/Full-Adder.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Full_Adder
 # -- Compiling architecture arch of Full_Adder
-# End time: 11:37:43 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:29 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# 
 # vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 11:37:43 on May 23,2021
+# Start time: 12:21:29 on May 23,2021
 # vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity testbench
 # -- Compiling architecture tb of testbench
-# End time: 11:37:43 on May 23,2021, Elapsed time: 0:00:00
+# End time: 12:21:29 on May 23,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:21:29 on May 23,2021
+# vcom -reportprogress 300 -93 -work work D:/IITB CSE/sem4/CS 226/Project/IITB_PROC/testbench.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity testbench
+# -- Compiling architecture tb of testbench
+# End time: 12:21:29 on May 23,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  testbench
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" testbench 
-# Start time: 11:37:44 on May 23,2021
+# Start time: 12:21:30 on May 23,2021
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -300,5 +300,4 @@
 #    Time: 0 ps  Iteration: 0  Instance: /testbench/test_instance/datapath_main/RF
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /testbench/test_instance/datapath_main/RF
-# End time: 11:38:41 on May 23,2021, Elapsed time: 0:00:57
-# Errors: 0, Warnings: 3
+add wave -position end  sim:/testbench/test_instance/datapath_main/RF/registers

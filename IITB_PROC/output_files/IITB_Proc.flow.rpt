@@ -1,5 +1,5 @@
 Flow report for IITB_Proc
-Sun May 23 11:36:59 2021
+Sun May 23 12:20:47 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Sun May 23 11:36:59 2021       ;
+; Flow Status                     ; Successful - Sun May 23 12:20:47 2021       ;
 ; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                   ; IITB_Proc                                   ;
 ; Top-level Entity Name           ; IITB_Proc                                   ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/23/2021 11:36:39 ;
+; Start date & time ; 05/23/2021 12:20:30 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; IITB_Proc           ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +--------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                ; 141734671988172.162174999820204        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                ; 141734671988172.162175262917340        ; --            ; --          ; --                                ;
 ; EDA_DESIGN_INSTANCE_NAME             ; test_instance                          ; --            ; --          ; testbench.vhd                     ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
@@ -110,8 +110,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 4878 MB             ; 00:00:36                           ;
-; Total                ; 00:00:21     ; --                      ; --                  ; 00:00:36                           ;
+; Analysis & Synthesis ; 00:00:18     ; 1.0                     ; 4874 MB             ; 00:00:34                           ;
+; Total                ; 00:00:18     ; --                      ; --                  ; 00:00:34                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
