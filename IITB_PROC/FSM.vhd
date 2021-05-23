@@ -309,7 +309,7 @@ end case;
 	c_m13 	<= vc_m13;
 	c_sext9 	<= vc_sext9;
 
-	if(clk'event and clk = '0') then
+	if(rising_edge(clk)) then
 		 if(rst = '1') then -- initially setting rst to 1 ensures that the state has a vaue for case analysis in the beginning 
 			 state <= S0; 
 		 else
